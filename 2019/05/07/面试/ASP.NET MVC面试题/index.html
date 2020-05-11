@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>ASP.NET MVC面试题 | 云顶小栈 | 小栖片刻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="面试">
+    <meta name="description" content="ol li{     margin:8px; } table th:first-of-type{     width:50%; } table th:nth-of-type(2){     width:50%; }   ViewData和ViewBag主要用于将数据从控制器中传递到视图中去，ViewData本身是一个字典。以KeyValue的形式存值。ViewData的Value类型是objec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASP.NET MVC面试题">
+<meta property="og:url" content="https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="云顶小栈">
+<meta property="og:description" content="ol li{     margin:8px; } table th:first-of-type{     width:50%; } table th:nth-of-type(2){     width:50%; }   ViewData和ViewBag主要用于将数据从控制器中传递到视图中去，ViewData本身是一个字典。以KeyValue的形式存值。ViewData的Value类型是objec">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-07T02:01:00.000Z">
+<meta property="article:modified_time" content="2020-05-11T03:28:26.246Z">
+<meta property="article:author" content="张峻豪">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张峻豪</h5>
+          <a href="mailto:zhangjunhaocloud@outlook.com" title="zhangjunhaocloud@outlook.com" class="mail">zhangjunhaocloud@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangjunhaocloud" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ASP.NET MVC面试题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ASP.NET MVC面试题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-07T02:01:00.000Z" itemprop="datePublished" class="page-time">
+  2019-05-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-面试/ASP.NET MVC面试题"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ASP.NET MVC面试题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-05-07 10:01:00" datetime="2019-05-07T02:01:00.000Z"  itemprop="datePublished">2019-05-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <style>
+ol li{
+    margin:8px;
+}
+table th:first-of-type{
+    width:50%;
+}
+table th:nth-of-type(2){
+    width:50%;
+}
+</style>
+<ol>
+<li>ViewData和ViewBag主要用于将数据从控制器中传递到视图中去，ViewData本身是一个字典。以KeyValue的形式存值。ViewData的Value类型是object。TempData是用于解决在不同的Action方法之间跳转的时候的数据传递。这里不同的Action可以是同一个Controller下的不同的Action之间，也可以是不同的Controller的Action之间。TempData实际上是把数据存在Session中</li>
+<li>ViewBag和ViewData是Controller与View之间值传递的内容。但是在实际使用中，它们并不是最佳选择，因为它们存在以下缺点 A、性能问题；ViewData中的值都是对象类型，使用之前必须转换为合适 的类型。会添加额外的性能负担。B、没有类型安全就没有编译时错误，如果尝试将其转换为错误的类型，运行时会报错。良好的编程经验告诉我们，错误必须在编译时捕获。C、数据发送和数据接收之间没有正确的连接；MVC中，Controller和    View是松散连接的。Controller是无法捕获View变化，View也无法捕获Controller内部发生的变化。从Controller传递一个ViewData或者ViewBag的值，当开发人员正在View中写入，就必须记录从Controller中即将获得什么值。如果Controller与View开发人员不是相同的开发人员，开发工作会变得非常困难。会导致许多运行时问题，降低开发效率。</li>
+<li>MVC模式的优缺点</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.通过把项目分成Model View和Controller，使得复杂项目更加容易维护2.没有使用ViewState和服务器表单控件，可以更方便的控制应用程序的行为3.应用程序通过Controller来控制程序请求，可以提供丰富的Url重写4.对单元测试的支持更加出色5.在团队开发模式下表现更出众</td>
+<td>1.增加系统结构和实现的复杂性。对于简单的界面，严格遵循MVC，使得模型、视图和控制器分离，会增加结构的复杂性，并可能产生过多的更新操作，降低运行效率2.视图与控制器间的过于紧密的连接。视图与控制器是相互分离，但确实紧密的部件，视图没有控制器的存在，其应用是很有限的，反之亦然，这样就妨碍了他们的独立重用3.视图对模型数据的低效率访问。依据模型操作接口的不同，视图可能需要多次调用才能获得足够的显示数据。对未变化数据的不必要的频繁访问，也将损害操作性能。</td>
+</tr>
+<tr>
+<td>4. NET中常用的几种页面传递参数的方法，并说出他们的优缺点</td>
+<td></td>
+</tr>
+<tr>
+<td>答：QueryString→传递一个或多个安全性要求不高或是结构简单的数值。但是对于传递数组或对话的话，不适用</td>
+<td></td>
+</tr>
+<tr>
+<td>Session(ViewState)→简单，但易丢失。作用于用户个人，过量的存储会导致服务器内存资源的耗尽</td>
+<td></td>
+</tr>
+<tr>
+<td>Application→对象的作用范围是整个全局，也就是说对所有用户都有效。其常用的方法是Lock和UnLock</td>
+<td></td>
+</tr>
+<tr>
+<td>Cookie→简单，但可能不支持，可能被伪造。Cookie是存储在客户端的，而Session是存放在服务器端的。而且Cookie的使用需要配合ASP.NET内置对象Request来使用</td>
+<td></td>
+</tr>
+<tr>
+<td>Input(隐藏控件)→简单，可能被伪造</td>
+<td></td>
+</tr>
+<tr>
+<td>Url→参数简单，显示于地址栏，但不安全且长度有限</td>
+<td></td>
+</tr>
+<tr>
+<td>Server.Transfer→把流程从当前页面引导到另一个页面中，新的页面使用前一个页面的应答流，数据库稳定，安全，但性能相对弱</td>
+<td></td>
+</tr>
+<tr>
+<td>5. 什么是ViewState</td>
+<td></td>
+</tr>
+<tr>
+<td>答：ViewState用来保存页面状态，就是说提交之后我们还可以看到文本框里面的内容就是ViewState保存的功劳。ViewState只维护当前页面的状态，不同页面之间不能共享，Session可以。ViewState可以理解为一个隐藏控件</td>
+<td></td>
+</tr>
+<tr>
+<td>6. ASP.NET页面生命周期</td>
+<td></td>
+</tr>
+<tr>
+<td>答：每个页面的生命周期为用户的每一次访问，也就是说每一次客户端与服务器之间的一个往返过程，全局变量的生命周期在此之间</td>
+<td></td>
+</tr>
+<tr>
+<td>1. Page_Init()</td>
+<td></td>
+</tr>
+<tr>
+<td>2. Load ViewState and Postback data;</td>
+<td></td>
+</tr>
+<tr>
+<td>3. Page_Load()</td>
+<td></td>
+</tr>
+<tr>
+<td>4. Handle control events</td>
+<td></td>
+</tr>
+<tr>
+<td>5. Page_PreRender()</td>
+<td></td>
+</tr>
+<tr>
+<td>6. Page_Render()</td>
+<td></td>
+</tr>
+<tr>
+<td>7. Unload event</td>
+<td></td>
+</tr>
+<tr>
+<td>8. Dispost method called</td>
+<td></td>
+</tr>
+</tbody></table>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-11T03:28:26.246Z" itemprop="dateUpdated">2020-05-11 11:28:26</time>
+</span><br>
+
+
+        
+        此网站所有内容仅表示作者个人看法,如有说得不合看官心意的请多多谅解!
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhangjunhaocloud.github.io">
+            <img src="/img/avatar.jpg" alt="张峻豪">
+            张峻豪
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/&title=《ASP.NET MVC面试题》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/&title=《ASP.NET MVC面试题》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ASP.NET MVC面试题》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/05/15/%E7%BD%91%E7%BB%9C/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">七层网络协议</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/05/05/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">数据库优化指南</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>张峻豪 &copy; 2011 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/&title=《ASP.NET MVC面试题》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/&title=《ASP.NET MVC面试题》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ASP.NET MVC面试题》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhangjunhaocloud.github.io/2019/05/07/%E9%9D%A2%E8%AF%95/ASP.NET%20MVC%E9%9D%A2%E8%AF%95%E9%A2%98/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'stay hungry stay foolish！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎您的光临!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

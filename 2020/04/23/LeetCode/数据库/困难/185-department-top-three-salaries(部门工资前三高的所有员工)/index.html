@@ -29,7 +29,7 @@
 <meta property="og:description" content="题目描述： Employee 表包含所有员工信息，每个员工有其对应的工号&amp;nbsp;Id，姓名 Name，工资 Salary 和部门编号 DepartmentId 。  +----+-------+--------+--------------+ | Id | Name  | Salary | DepartmentId | +----+-------+--------+--------------">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-23T02:04:00.000Z">
-<meta property="article:modified_time" content="2020-04-23T02:06:36.046Z">
+<meta property="article:modified_time" content="2020-04-23T10:55:28.099Z">
 <meta property="article:author" content="张峻豪">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="力扣">
@@ -220,16 +220,8 @@
 <p>IT 部门中，Max 获得了最高的工资，Randy 和 Joe 都拿到了第二高的工资，Will 的工资排第三。销售部门（Sales）只有两名员工，Henry 的工资最高，Sam 的工资排第二。</p>
 
 <p>解答：</p>
-<pre>
-SELECT A.Department, A.Employee, A.Salary
-FROM
-(
-    SELECT DENSE_RANK() OVER(PARTITION BY A.DepartmentId ORDER BY A.Salary DESC) AS RowId, A.Name AS Employee, A.Salary, B.Name AS Department
-    FROM dbo.Employee AS A
-    INNER JOIN dbo.Department AS B ON A.DepartmentId = B.Id
-) AS A
-WHERE A.RowId <= 3
-</pre>
+<p>MSSQL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT A.Department, A.Employee, A.Salary</span><br><span class="line">FROM</span><br><span class="line">(</span><br><span class="line">    SELECT DENSE_RANK() OVER(PARTITION BY A.DepartmentId ORDER BY A.Salary DESC) AS RowId, A.Name AS Employee, A.Salary, B.Name AS Department</span><br><span class="line">    FROM dbo.Employee AS A</span><br><span class="line">    INNER JOIN dbo.Department AS B ON A.DepartmentId &#x3D; B.Id</span><br><span class="line">) AS A</span><br><span class="line">WHERE A.RowId &lt;&#x3D; 3</span><br></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
@@ -237,7 +229,7 @@ WHERE A.RowId <= 3
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-23T02:06:36.046Z" itemprop="dateUpdated">2020-04-23 10:06:36</time>
+    最后更新时间：<time datetime="2020-04-23T10:55:28.099Z" itemprop="dateUpdated">2020-04-23 18:55:28</time>
 </span><br>
 
 

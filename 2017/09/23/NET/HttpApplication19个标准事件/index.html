@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>HttpApplication19个标准事件 | 云顶小栈 | 小栖片刻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="NET">
+    <meta name="description" content="事件名称 说明    BeginRequest Asp.net处理的第一个事件，表示处理的开始   AuthenticateRequest 验证请求，一般用来取得请求用户的信息   PostAuthenticateRequest 已经获取请求用户的信息   AuthorizeRequest 授权，一般用来检查用户的请求是否获取权限   PostAuthorizeRequest 已经获取请求用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HttpApplication19个标准事件">
+<meta property="og:url" content="https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/index.html">
+<meta property="og:site_name" content="云顶小栈">
+<meta property="og:description" content="事件名称 说明    BeginRequest Asp.net处理的第一个事件，表示处理的开始   AuthenticateRequest 验证请求，一般用来取得请求用户的信息   PostAuthenticateRequest 已经获取请求用户的信息   AuthorizeRequest 授权，一般用来检查用户的请求是否获取权限   PostAuthorizeRequest 已经获取请求用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-09-23T07:43:00.000Z">
+<meta property="article:modified_time" content="2020-05-11T03:59:23.030Z">
+<meta property="article:author" content="张峻豪">
+<meta property="article:tag" content="NET">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张峻豪</h5>
+          <a href="mailto:zhangjunhaocloud@outlook.com" title="zhangjunhaocloud@outlook.com" class="mail">zhangjunhaocloud@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangjunhaocloud" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">HttpApplication19个标准事件</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">HttpApplication19个标准事件</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-23T07:43:00.000Z" itemprop="datePublished" class="page-time">
+  2017-09-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-NET/HttpApplication19个标准事件"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">HttpApplication19个标准事件</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-23 15:43:00" datetime="2017-09-23T07:43:00.000Z"  itemprop="datePublished">2017-09-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BeginRequest</td>
+<td>Asp.net处理的第一个事件，表示处理的开始</td>
+</tr>
+<tr>
+<td>AuthenticateRequest</td>
+<td>验证请求，一般用来取得请求用户的信息</td>
+</tr>
+<tr>
+<td>PostAuthenticateRequest</td>
+<td>已经获取请求用户的信息</td>
+</tr>
+<tr>
+<td>AuthorizeRequest</td>
+<td>授权，一般用来检查用户的请求是否获取权限</td>
+</tr>
+<tr>
+<td>PostAuthorizeRequest</td>
+<td>已经获取请求用户的信息</td>
+</tr>
+<tr>
+<td>ResolveRequestCache</td>
+<td>获取以前处理缓存的处理结果，如果以前缓存过，那么，不必再进行请求的处理工作，直接返回缓存结果</td>
+</tr>
+<tr>
+<td>PostResolveRequestCache</td>
+<td>已完成缓存的获取操作</td>
+</tr>
+<tr>
+<td>PostMapRequestHandler</td>
+<td>已经根据用户的请求，创建了处理请求的处理器对象</td>
+</tr>
+<tr>
+<td>AcquireRequestState</td>
+<td>取得请求的状态，一般用于Session</td>
+</tr>
+<tr>
+<td>PostAcquireRequestState</td>
+<td>已经取得Session</td>
+</tr>
+<tr>
+<td>PreRequestHandlerExecute</td>
+<td>准备执行处理程序</td>
+</tr>
+<tr>
+<td>PostRequestHandlerExecute</td>
+<td>已经执行了处理程序</td>
+</tr>
+<tr>
+<td>ReleaseRequestState</td>
+<td>释放请求的状态</td>
+</tr>
+<tr>
+<td>PostReleaseRequestState</td>
+<td>已经释放了请求的状态</td>
+</tr>
+<tr>
+<td>UpdateRequestCache</td>
+<td>更新缓存</td>
+</tr>
+<tr>
+<td>PostUpdateRequestCache</td>
+<td>已经更新了缓存</td>
+</tr>
+<tr>
+<td>LogRequest</td>
+<td>请求的日志操作</td>
+</tr>
+<tr>
+<td>PostLogRequest</td>
+<td>已经完成了请求的日志操作</td>
+</tr>
+<tr>
+<td>EndRequest</td>
+<td>本次请求处理完成</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-11T03:59:23.030Z" itemprop="dateUpdated">2020-05-11 11:59:23</time>
+</span><br>
+
+
+        
+        此网站所有内容仅表示作者个人看法,如有说得不合看官心意的请多多谅解!
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhangjunhaocloud.github.io">
+            <img src="/img/avatar.jpg" alt="张峻豪">
+            张峻豪
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NET/" rel="tag">NET</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/&title=《HttpApplication19个标准事件》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/&title=《HttpApplication19个标准事件》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HttpApplication19个标准事件》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/11/EF/EF%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">EF基础知识</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/07/21/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E4%BD%A0%E5%BF%85%E9%A1%BB%E7%9F%A5%E9%81%93%E7%9A%84.NET/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">你必须知道的.NET</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>张峻豪 &copy; 2011 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/&title=《HttpApplication19个标准事件》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/&title=《HttpApplication19个标准事件》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HttpApplication19个标准事件》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhangjunhaocloud.github.io/2017/09/23/NET/HttpApplication19%E4%B8%AA%E6%A0%87%E5%87%86%E4%BA%8B%E4%BB%B6/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'stay hungry stay foolish！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎您的光临!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

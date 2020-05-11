@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>实用SQL(MSSQL) | 云顶小栈 | 小栖片刻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="数据库,MSSQL">
+    <meta name="description" content="ol li{     margin:8px; }   清空所有数据 1exec sp_msforeachtable  @Command1 &#x3D;&#39;truncate table ?&#39; SQL数据转成XML 123456789101112131415161718DECLARE @CurCount INT, @TotalCount INT, @StrSql VARCHAR(800">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实用SQL(MSSQL)">
+<meta property="og:url" content="https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/index.html">
+<meta property="og:site_name" content="云顶小栈">
+<meta property="og:description" content="ol li{     margin:8px; }   清空所有数据 1exec sp_msforeachtable  @Command1 &#x3D;&#39;truncate table ?&#39; SQL数据转成XML 123456789101112131415161718DECLARE @CurCount INT, @TotalCount INT, @StrSql VARCHAR(800">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-22T23:34:00.000Z">
+<meta property="article:modified_time" content="2020-05-11T06:28:52.837Z">
+<meta property="article:author" content="张峻豪">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="MSSQL">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张峻豪</h5>
+          <a href="mailto:zhangjunhaocloud@outlook.com" title="zhangjunhaocloud@outlook.com" class="mail">zhangjunhaocloud@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangjunhaocloud" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">实用SQL(MSSQL)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">实用SQL(MSSQL)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-12-22T23:34:00.000Z" itemprop="datePublished" class="page-time">
+  2019-12-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-数据库/MSSQL/实用SQL(MSSQL)"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">实用SQL(MSSQL)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-12-23 07:34:00" datetime="2019-12-22T23:34:00.000Z"  itemprop="datePublished">2019-12-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <style>
+ol li{
+    margin:8px;
+}
+</style>
+<ol>
+<li><p>清空所有数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec sp_msforeachtable  @Command1 &#x3D;&#39;truncate table ?&#39;</span><br></pre></td></tr></table></figure></li>
+<li><p>SQL数据转成XML</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">DECLARE @CurCount INT, @TotalCount INT, @StrSql VARCHAR(8000), @TableName VARCHAR(50)</span><br><span class="line">SELECT @CurCount &#x3D; 1, @TotalCount &#x3D; 0, @StrSql &#x3D; &#39;&#39;, @TableName &#x3D; &#39;&#39;</span><br><span class="line"> </span><br><span class="line">SELECT IDENTITY(INT, 1, 1) AS KeyId, name INTO #Temp1 FROM sysobjects AS A WHERE name LIKE &#39;CMPS%&#39;</span><br><span class="line">SELECT @TotalCount &#x3D; COUNT(*) FROM #Temp1 AS A</span><br><span class="line"> </span><br><span class="line">WHILE @CurCount &lt;&#x3D; @TotalCount</span><br><span class="line">BEGIN</span><br><span class="line">SELECT @TableName &#x3D; name FROM #Temp1 AS A WHERE KeyId &#x3D; @CurCount</span><br><span class="line"> </span><br><span class="line">SELECT @StrSql &#x3D; &#39;SELECT * FROM &#39; + @TableName + &#39; FOR XML AUTO, ELEMENTS, ROOT&#39;</span><br><span class="line"> </span><br><span class="line">EXEC (@StrSql)</span><br><span class="line"> </span><br><span class="line">SELECT @CurCount +&#x3D; 1, @TableName &#x3D; &#39;&#39;</span><br><span class="line">END</span><br><span class="line"> </span><br><span class="line">DROP TABLE #Temp1</span><br></pre></td></tr></table></figure></li>
+<li><p>SQL中递归应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE #BD_MTLCategory</span><br><span class="line">(</span><br><span class="line">    CategoryId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,</span><br><span class="line">    CategoryLevel INT,</span><br><span class="line">    CategoryName VARCHAR(20),</span><br><span class="line">    ParentCategoryId INT</span><br><span class="line">)</span><br><span class="line">INSERT INTO #BD_MTLCategory(CategoryLevel, CategoryName, ParentCategoryId)</span><br><span class="line">SELECT 1, &#39;纺织品类&#39;, -1 UNION ALL</span><br><span class="line">SELECT 2, &#39;网类&#39;, 1 UNION ALL</span><br><span class="line">SELECT 2, &#39;布类&#39;, 1 UNION ALL</span><br><span class="line">SELECT 2, &#39;绒类&#39;, 1 UNION ALL</span><br><span class="line">SELECT 3, &#39;斜纹布&#39;, 4</span><br><span class="line"></span><br><span class="line">DECLARE @Level int, @CategoryId int, @ParentCategoryId int, @CategoryName VARCHAR(20)</span><br><span class="line">DECLARE @StatckTB TABLE(CategoryId int, CategoryLevel int, CategoryName VARCHAR(20))       </span><br><span class="line"></span><br><span class="line">--临时数据集</span><br><span class="line">DECLARE @TempTB TABLE( CategoryId int, Kind int, CategoryName VARCHAR(20) )                             </span><br><span class="line">--最终数据</span><br><span class="line">SELECT @ParentCategoryId &#x3D; 1, @Level &#x3D; 1, @CategoryName &#x3D; &#39;纺织品类&#39;</span><br><span class="line">INSERT INTO @StatckTB VALUES( @ParentCategoryId, @Level, @CategoryName)</span><br><span class="line"></span><br><span class="line">WHILE @Level &gt; 0</span><br><span class="line">BEGIN</span><br><span class="line">    IF EXISTS (SELECT * FROM @StatckTB WHERE CategoryLevel&#x3D;@Level )</span><br><span class="line">    BEGIN</span><br><span class="line">        SELECT @CategoryId&#x3D;CategoryId, @CategoryName &#x3D; CategoryName FROM @StatckTB WHERE CategoryLevel&#x3D;@Level</span><br><span class="line">        INSERT INTO @TempTB VALUES (@CategoryId, @ParentCategoryId, @CategoryName)</span><br><span class="line">        DELETE FROM @StatckTB WHERE CategoryId&#x3D;@CategoryId AND CategoryLevel&#x3D;@Level</span><br><span class="line">        INSERT INTO @StatckTB SELECT CategoryId, @Level+1, CategoryName FROM #BD_MTLCategory WHERE ParentCategoryId&#x3D;@CategoryId AND CategoryId &lt;&gt; @CategoryId</span><br><span class="line">        IF @@ROWCOUNT &gt; 0</span><br><span class="line">            SELECT @Level &#x3D; @Level + 1</span><br><span class="line">    END</span><br><span class="line">    ELSE</span><br><span class="line">        SELECT @Level &#x3D; @Level - 1</span><br><span class="line">END</span><br><span class="line">SELECT * FROM @TempTB ORDER BY CategoryId</span><br><span class="line">DROP TABLE #BD_MTLCategory</span><br></pre></td></tr></table></figure></li>
+<li><p>格式化字符(固定长度，不足则以固定值填充)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DECLARE @TempNumber VARCHAR( 20)</span><br><span class="line">SELECT @TempNumber &#x3D; &#39;1111&#39;</span><br><span class="line">SELECT RIGHT( &#39;00000&#39; + CAST( @TempNumber AS VARCHAR( 5)), 5 ) AS TempNumber</span><br><span class="line">SELECT LEFT( CAST(@TempNumber AS VARCHAR(5 )) + &#39;00000&#39;, 5) AS TempNumber</span><br></pre></td></tr></table></figure></li>
+<li><p>中文转换成拼音简码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">create   function    [dbo]. f_GetPy(@str    nvarchar( 4000))</span><br><span class="line">returns   nvarchar (4000)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">declare   @strlen    int, @re   nvarchar (4000)</span><br><span class="line">declare   @t    table( chr   nchar (1)    collate   Chinese_PRC_CI_AS,letter    nchar(1 ))</span><br><span class="line">insert   into    @t( chr,letter )</span><br><span class="line">    select   &#39; 吖&#39;, &#39;A &#39;   union   all    select   &#39;八&#39; , &#39;B &#39;    union   all</span><br><span class="line">    select   &#39; 嚓&#39;, &#39;C &#39;   union   all    select   &#39;咑&#39; , &#39;D &#39;    union   all</span><br><span class="line">    select   &#39; 妸&#39;, &#39;E &#39;   union   all    select   &#39;发&#39; , &#39;F &#39;    union   all</span><br><span class="line">    select   &#39; 旮&#39;, &#39;G &#39;   union   all    select   &#39;铪&#39; , &#39;H &#39;    union   all</span><br><span class="line">    select   &#39; 丌&#39;, &#39;J &#39;   union   all    select   &#39;咔&#39; , &#39;K &#39;    union   all</span><br><span class="line">    select   &#39; 垃&#39;, &#39;L &#39;   union   all    select   &#39;嘸&#39; , &#39;M &#39;    union   all</span><br><span class="line">    select   &#39; 拏&#39;, &#39;N &#39;   union   all    select   &#39;噢&#39; , &#39;O &#39;    union   all</span><br><span class="line">    select   &#39; 妑&#39;, &#39;P &#39;   union   all    select   &#39;七&#39; , &#39;Q &#39;    union   all</span><br><span class="line">    select   &#39; 呥&#39;, &#39;R &#39;   union   all    select   &#39;仨&#39; , &#39;S &#39;    union   all</span><br><span class="line">    select   &#39; 他&#39;, &#39;T &#39;   union   all    select   &#39;屲&#39; , &#39;W &#39;    union   all</span><br><span class="line">    select   &#39; 夕&#39;, &#39;X &#39;   union   all    select   &#39;丫&#39; , &#39;Y &#39;    union   all</span><br><span class="line">    select   &#39; 帀&#39;, &#39;Z &#39;</span><br><span class="line">    select   @strlen &#x3D;len( @str),@re &#x3D; &#39; &#39;</span><br><span class="line">    while   @strlen &gt; 0</span><br><span class="line">    begin</span><br><span class="line">        select   top    1   @re&#x3D; letter+@re ,@strlen&#x3D; @strlen-1</span><br><span class="line">            from   @t    a   where   chr &lt;&#x3D;substring (@str, @strlen,1 )</span><br><span class="line">            order   by    chr   desc</span><br><span class="line">        if   @@rowcount &#x3D;0</span><br><span class="line">            select   @re &#x3D;substring( @str,@strlen ,1)+ @re,@strlen &#x3D;@strlen- 1</span><br><span class="line">    end</span><br><span class="line">    return(@re )</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li><p>根据某个字段合并问题<br>法一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">CREATE FUNCTION GetResult( @Id INT )</span><br><span class="line">RETURNS NVARCHAR (20)</span><br><span class="line">AS</span><br><span class="line">BEGIN</span><br><span class="line">    DECLARE @resultstr NVARCHAR( 100), @tempstr NVARCHAR (20), @tempid INT</span><br><span class="line">    DECLARE mycursor CURSOR</span><br><span class="line">    FOR SELECT * FROM dbo .TestTB</span><br><span class="line">    OPEN mycursor</span><br><span class="line">    FETCH NEXT FROM mycursor INTO @tempid, @tempstr</span><br><span class="line">    WHILE (@@FETCH_STATUS &#x3D; 0 )</span><br><span class="line">    BEGIN</span><br><span class="line">            IF(@tempid &#x3D; @Id)</span><br><span class="line">            BEGIN</span><br><span class="line">                SET @tempstr &#x3D; STUFF(@tempstr , 1, 0, &#39;,&#39;)</span><br><span class="line">                SET @resultstr &#x3D; STUFF(@tempstr , 1, 0, @resultstr)</span><br><span class="line">            END</span><br><span class="line">            FETCH NEXT FROM mycursor INTO @tempid, @tempstr</span><br><span class="line">    END</span><br><span class="line">    SET @resultstr &#x3D; STUFF(@resultstr , 1, 1, &#39;&#39;)</span><br><span class="line">    CLOSE mycursor</span><br><span class="line">    DEALLOCATE mycursor</span><br><span class="line">    RETURN (@resultstr )</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+<p>法二</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE TestTB</span><br><span class="line">(</span><br><span class="line">    KeyID INT IDENTITY( 1, 1 ) NOT NULL PRIMARY KEY ,</span><br><span class="line">    Material_Id VARCHAR (30) NOT NULL DEFAULT (&#39;&#39;),</span><br><span class="line">    Number_Id VARCHAR (20) NOT NULL DEFAULT (&#39;&#39;)</span><br><span class="line">)</span><br><span class="line">INSERT INTO dbo. TestTB(Material_Id , Number_Id )</span><br><span class="line">SELECT &#39;SFB21001BK30000&#39; , &#39;SFB21001&#39; UNION ALL</span><br><span class="line">SELECT &#39;SFB21001WH10000&#39; , &#39;SFB21001&#39; UNION ALL</span><br><span class="line">SELECT &#39;SFB21002BK30000&#39; , &#39;SFB21002&#39; UNION ALL</span><br><span class="line">SELECT &#39;SFB21002WH10000&#39; , &#39;SFB21002&#39;</span><br><span class="line"> </span><br><span class="line">SELECT * FROM TestTB</span><br><span class="line">SELECT DISTINCT A. Number_Id, STUFF((SELECT &#39;,&#39; + Material_Id FROM dbo.TestTB WHERE Number_Id &#x3D; A. Number_Id FOR XML PATH(&#39;&#39; )), 1, 1, &#39;&#39;) AS Material_Id</span><br><span class="line">FROM dbo .TestTB AS A</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>详解 :<br>1、SELECT ‘,’ + Material_Id FROM dbo.TestTB WHERE Number_Id = A.Number_Id FOR XML PATH(‘’)<br>这条语句的作用是按照 A中的Number_Id 查询TestTB表中的 Number_Id = A.Nummber_Id的所有记录，并转换成XML<br>2、STUFF((SELECT ‘,’ + Material_Id FROM dbo.TestTB WHERE Number_Id = A.Number_Id FOR XML PATH(‘’)), 1, 1, ‘’)<br>这条语句的作用是把生成的 XML前面的一个逗号去掉并转化成标量值</p>
+</blockquote>
+</li>
+<li><p>小写数字转大写数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">CREATE  FUNCTION CapitalNUM(@ChangeMoney numeric(15,2)) </span><br><span class="line">RETURNS VarChar(100) AS </span><br><span class="line">BEGIN</span><br><span class="line">    Declare    @String1    char(20)</span><br><span class="line">    Declare    @String2    char(30)</span><br><span class="line">    Declare    @String4    Varchar(100)</span><br><span class="line">    Declare @String3     Varchar(100)    --从原A值中取出的值</span><br><span class="line">    Declare @i         int        --循环变量</span><br><span class="line">    Declare @J         Int        --A的值乘以100的字符串长度</span><br><span class="line">    Declare @Ch1         Varchar(100)    --数字的汉语读法</span><br><span class="line">    Declare @Ch2         Varchar(100)    --数字位的汉字读法</span><br><span class="line">    Declare @Zero         Int        --用来计算连续有几个零</span><br><span class="line">    Declare    @ReturnValue    VarChar(100)</span><br><span class="line">    Select  @ReturnValue &#x3D; &#39;&#39;</span><br><span class="line">    Select     @String1 &#x3D; &#39;零壹贰叁肆伍陆柒捌玖&#39;</span><br><span class="line">    Select    @String2 &#x3D; &#39;万仟佰拾亿仟佰拾万仟佰拾点零零&#39;</span><br><span class="line">    Select @String4 &#x3D; Cast(@ChangeMoney*100 as int)   </span><br><span class="line">    select @J&#x3D;len(cast((@ChangeMoney*100) as int))</span><br><span class="line">    Select @String2&#x3D;Right(@String2,@J)</span><br><span class="line">    Select    @i &#x3D; 1</span><br><span class="line">    while    @i&lt;&#x3D; @j Begin</span><br><span class="line">        Select @String3 &#x3D; Substring(@String4,@i,1)</span><br><span class="line">        if @String3&lt;&gt;&#39;0&#39; Begin</span><br><span class="line">            Select     @Ch1 &#x3D; Substring(@String1, Cast(@String3 as Int) + 1, 1)</span><br><span class="line">            Select    @Ch2 &#x3D; Substring(@String2, @i, 1)</span><br><span class="line">            Select    @Zero &#x3D; 0                    --表示本位不为零</span><br><span class="line">        end</span><br><span class="line">        else Begin</span><br><span class="line">            If (@Zero &#x3D; 0) Or (@i &#x3D; @J - 9) Or (@i &#x3D; @J - 5) Or (@i &#x3D; @J - 1)</span><br><span class="line">                        Select @Ch1 &#x3D; &#39;零&#39;</span><br><span class="line">                    Else</span><br><span class="line">                        Select @Ch1 &#x3D; &#39;&#39;</span><br><span class="line">                    Select @Zero &#x3D; @Zero + 1             --表示本位为0</span><br><span class="line">                       </span><br><span class="line">            --如果转换的数值需要扩大，那么需改动以下表达式 I 的值。</span><br><span class="line">            Select @Ch2 &#x3D; &#39;&#39;</span><br><span class="line">                If @i &#x3D; @J - 10  Begin</span><br><span class="line">                        Select @Ch2 &#x3D; &#39;亿&#39;</span><br><span class="line">                        Select @Zero &#x3D; 0</span><br><span class="line">            end</span><br><span class="line">                   </span><br><span class="line">            If @i &#x3D; @J - 6 Begin</span><br><span class="line">                        Select @Ch2 &#x3D; &#39;万&#39;</span><br><span class="line">                        Select @Zero &#x3D; 0</span><br><span class="line">            end</span><br><span class="line">                   </span><br><span class="line">            if @i &#x3D; @J - 2 Begin</span><br><span class="line">                        Select @Ch2 &#x3D; &#39;点&#39;</span><br><span class="line">                        Select @Zero &#x3D; 0</span><br><span class="line">            end</span><br><span class="line">                   </span><br><span class="line">            If @i &#x3D; @J</span><br><span class="line">                        Select @Ch2 &#x3D; &#39;整&#39;</span><br><span class="line">                       </span><br><span class="line">        end   </span><br><span class="line">if  (@i &#x3D; @J) or ( @i &#x3D; @J-1) begin</span><br><span class="line">     Select @Ch2 &#x3D; &#39;&#39;</span><br><span class="line">end</span><br><span class="line">        Select @ReturnValue &#x3D; @ReturnValue + @Ch1 + @Ch2</span><br><span class="line">        select @i &#x3D; @i+1</span><br><span class="line">    end</span><br><span class="line">    --最后将多余的零去掉</span><br><span class="line">    If CharIndex(&#39;仟仟&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;仟仟&#39;, &#39;仟&#39;)</span><br><span class="line">    If CharIndex(&#39;佰佰&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;佰佰&#39;, &#39;佰&#39;)</span><br><span class="line">        If CharIndex(&#39;零元&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零元&#39;, &#39;元&#39;)</span><br><span class="line">   </span><br><span class="line">        If CharIndex(&#39;零万&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零万&#39;, &#39;万&#39;)</span><br><span class="line">  </span><br><span class="line">        If CharIndex(&#39;零亿&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零亿&#39;, &#39;亿&#39;)</span><br><span class="line">   </span><br><span class="line">        If CharIndex(&#39;零整&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零整&#39;, &#39;整&#39;)</span><br><span class="line">   </span><br><span class="line">    If CharIndex(&#39;零佰&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零佰&#39;, &#39;零&#39;)</span><br><span class="line">    If CharIndex(&#39;零仟&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零仟&#39;, &#39;零&#39;)</span><br><span class="line">   </span><br><span class="line">      If CharIndex(&#39;零点零&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零点零&#39;, &#39;&#39;)</span><br><span class="line">      If CharIndex(&#39;零点&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零点&#39;, &#39;点&#39;)</span><br><span class="line">return @ReturnValue</span><br><span class="line">END</span><br></pre></td></tr></table></figure></li>
+<li><p>小写数字直接改大写数字 不加十百千万</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">CREATE  FUNCTION CapitalDig(@ChangeMoney numeric(15,2)) </span><br><span class="line">RETURNS VarChar(100) AS </span><br><span class="line">BEGIN</span><br><span class="line">    Declare    @String1    char(20)</span><br><span class="line"> </span><br><span class="line">    Declare    @String4    Varchar(100)</span><br><span class="line">    Declare @String3     Varchar(100)    --从原A值中取出的值</span><br><span class="line">    Declare @i         int        --循环变量</span><br><span class="line">    Declare @J         Int        --A转换成字符串的长度</span><br><span class="line">    Declare @Ch1         Varchar(100)    --数字的汉语读法</span><br><span class="line"> </span><br><span class="line">    Declare    @ReturnValue    VarChar(100)</span><br><span class="line">    Select  @ReturnValue &#x3D; &#39;&#39;</span><br><span class="line">    Select     @String1 &#x3D; &#39;零壹贰叁肆伍陆柒捌玖&#39;</span><br><span class="line"> </span><br><span class="line">    Select @String4 &#x3D; Cast(@ChangeMoney as int)   </span><br><span class="line">    select @J&#x3D;len(cast((@ChangeMoney ) as int))</span><br><span class="line"> </span><br><span class="line">    Select    @i &#x3D; 1</span><br><span class="line">    while    @i&lt;&#x3D; @j Begin</span><br><span class="line">        Select @String3 &#x3D; Substring(@String4,@i,1)</span><br><span class="line">   </span><br><span class="line">            Select     @Ch1 &#x3D; Substring(@String1, Cast(@String3 as Int) + 1, 1)</span><br><span class="line">     </span><br><span class="line">                  Select @ReturnValue &#x3D; @ReturnValue + @Ch1     </span><br><span class="line">        select @i &#x3D; @i+1</span><br><span class="line">end</span><br><span class="line">       return @ReturnValue</span><br><span class="line">END</span><br></pre></td></tr></table></figure></li>
+<li><p>小写金额转大写金额</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">CREATE FUNCTION CapitalRMB(@ChangeMoney numeric(15,2)) </span><br><span class="line">RETURNS VarChar(100) AS </span><br><span class="line">BEGIN</span><br><span class="line">    Declare    @String1    char(20)</span><br><span class="line">    Declare    @String2    char(30)</span><br><span class="line">    Declare    @String4    Varchar(100)</span><br><span class="line">    Declare @String3     Varchar(100)    --从原A值中取出的值</span><br><span class="line">    Declare @i         int        --循环变量</span><br><span class="line">    Declare @J         Int        --A的值乘以100的字符串长度</span><br><span class="line">    Declare @Ch1         Varchar(100)    --数字的汉语读法</span><br><span class="line">    Declare @Ch2         Varchar(100)    --数字位的汉字读法</span><br><span class="line">    Declare @Zero         Int        --用来计算连续有几个零</span><br><span class="line">    Declare    @ReturnValue    VarChar(100)</span><br><span class="line">    Select  @ReturnValue &#x3D; &#39;&#39;</span><br><span class="line">    Select     @String1 &#x3D; &#39;零壹贰叁肆伍陆柒捌玖&#39;</span><br><span class="line">    Select    @String2 &#x3D; &#39;万仟佰拾亿仟佰拾万仟佰拾元角分&#39;</span><br><span class="line">    Select @String4 &#x3D; Cast(@ChangeMoney*100 as int)   </span><br><span class="line">    select @J&#x3D;len(cast((@ChangeMoney*100) as int))</span><br><span class="line">    Select @String2&#x3D;Right(@String2,@J)</span><br><span class="line">    Select    @i &#x3D; 1</span><br><span class="line">    while    @i&lt;&#x3D; @j Begin</span><br><span class="line">        Select @String3 &#x3D; Substring(@String4,@i,1)</span><br><span class="line">        if @String3&lt;&gt;&#39;0&#39; Begin</span><br><span class="line">            Select     @Ch1 &#x3D; Substring(@String1, Cast(@String3 as Int) + 1, 1)</span><br><span class="line">            Select    @Ch2 &#x3D; Substring(@String2, @i, 1)</span><br><span class="line">            Select    @Zero &#x3D; 0                    --表示本位不为零</span><br><span class="line">        end</span><br><span class="line">        else Begin</span><br><span class="line">            If (@Zero &#x3D; 0) Or (@i &#x3D; @J - 9) Or (@i &#x3D; @J - 5) Or (@i &#x3D; @J - 1)</span><br><span class="line">                        Select @Ch1 &#x3D; &#39;零&#39;</span><br><span class="line">                    Else</span><br><span class="line">                        Select @Ch1 &#x3D; &#39;&#39;</span><br><span class="line">                    Select @Zero &#x3D; @Zero + 1             --表示本位为0</span><br><span class="line">                       </span><br><span class="line">            --如果转换的数值需要扩大，那么需改动以下表达式 I 的值。</span><br><span class="line">            Select @Ch2 &#x3D; &#39;&#39;</span><br><span class="line">                If @i &#x3D; @J - 10  Begin</span><br><span class="line">                        Select @Ch2 &#x3D; &#39;亿&#39;</span><br><span class="line">                        Select @Zero &#x3D; 0</span><br><span class="line">            end</span><br><span class="line">                   </span><br><span class="line">            If @i &#x3D; @J - 6 Begin</span><br><span class="line">                        Select @Ch2 &#x3D; &#39;万&#39;</span><br><span class="line">                        Select @Zero &#x3D; 0</span><br><span class="line">            end</span><br><span class="line">                   </span><br><span class="line">            if @i &#x3D; @J - 2 Begin</span><br><span class="line">                        Select @Ch2 &#x3D; &#39;元&#39;</span><br><span class="line">                        Select @Zero &#x3D; 0</span><br><span class="line">            end</span><br><span class="line">                   </span><br><span class="line">            If @i &#x3D; @J</span><br><span class="line">                        Select @Ch2 &#x3D; &#39;整&#39;</span><br><span class="line">                       </span><br><span class="line">        end   </span><br><span class="line">        Select @ReturnValue &#x3D; @ReturnValue + @Ch1 + @Ch2</span><br><span class="line">        select @i &#x3D; @i+1</span><br><span class="line">    end</span><br><span class="line">    --最后将多余的零去掉</span><br><span class="line">    If CharIndex(&#39;仟仟&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;仟仟&#39;, &#39;仟&#39;)</span><br><span class="line">    If CharIndex(&#39;佰佰&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;佰佰&#39;, &#39;佰&#39;)</span><br><span class="line">        If CharIndex(&#39;零元&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零元&#39;, &#39;元&#39;)</span><br><span class="line">   </span><br><span class="line">        If CharIndex(&#39;零万&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零万&#39;, &#39;万&#39;)</span><br><span class="line">  </span><br><span class="line">        If CharIndex(&#39;零亿&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零亿&#39;, &#39;亿&#39;)</span><br><span class="line">   </span><br><span class="line">        If CharIndex(&#39;零整&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零整&#39;, &#39;整&#39;)</span><br><span class="line">   </span><br><span class="line">    If CharIndex(&#39;零佰&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零佰&#39;, &#39;零&#39;)</span><br><span class="line">    If CharIndex(&#39;零仟&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;零仟&#39;, &#39;零&#39;)</span><br><span class="line">    If CharIndex(&#39;元元&#39;,@ReturnValue) &lt;&gt; 0</span><br><span class="line">            Select @ReturnValue &#x3D; Replace(@ReturnValue, &#39;元元&#39;, &#39;元&#39;)</span><br><span class="line">    return @ReturnValue</span><br><span class="line">END</span><br></pre></td></tr></table></figure></li>
+<li><p>小写金额转换成大写金额</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">CREATE FUNCTION dbo.AZ_FUN_LowerCASEToUpperCASENumberValue(@LowerMoney NUMERIC(15 ,2), @Scale INT )</span><br><span class="line">       RETURNS VARCHAR (200) AS</span><br><span class="line">BEGIN</span><br><span class="line">       DECLARE @LowerCASEStr VARCHAR( 200) -- 小写金额</span><br><span class="line">       DECLARE @UpperPart VARCHAR( 200)</span><br><span class="line">       DECLARE @UpperCASEStr VARCHAR( 200) -- 大写金额</span><br><span class="line">       DECLARE @RowCount INT</span><br><span class="line">       SET @LowerCASEStr &#x3D; LTRIM(RTRIM (ROUND( @LowerMoney,2 ))) -- 四舍五入为指定的精度并删除数据左右空格</span><br><span class="line">       SET @RowCount &#x3D; 1</span><br><span class="line">       SET @UpperCASEStr &#x3D; &#39;&#39;</span><br><span class="line">       WHILE ( @RowCount &lt;&#x3D; LEN( @LowerCASEStr))</span><br><span class="line">       BEGIN</span><br><span class="line">             SELECT @UpperPart &#x3D; CASE substring(@LowerCASEStr ,LEN( @LowerCASEStr) - @RowCount + 1 ,1)</span><br><span class="line">                                           WHEN &#39;.&#39; THEN &#39;元&#39; WHEN &#39;0&#39; THEN &#39; 零&#39; WHEN &#39;1&#39; THEN &#39;壹&#39; WHEN &#39;2&#39; THEN &#39;贰 &#39; WHEN &#39;3&#39; THEN &#39; 叁&#39;</span><br><span class="line">                                           WHEN &#39;4&#39; THEN &#39;肆&#39; WHEN &#39;5&#39; THEN &#39; 伍&#39; WHEN &#39;6&#39; THEN &#39;陆&#39; WHEN &#39;7&#39; THEN &#39;柒 &#39; WHEN &#39;8&#39; THEN &#39; 捌&#39; WHEN &#39;9&#39; THEN &#39;玖 &#39; END</span><br><span class="line">                                           +</span><br><span class="line">                                           CASE @RowCount</span><br><span class="line">                                           WHEN 1 THEN &#39;分 &#39; WHEN 2 THEN &#39;角&#39; WHEN 3 THEN &#39;&#39; WHEN 4 THEN &#39;&#39; WHEN 5 THEN &#39; 拾&#39; WHEN 6 THEN &#39;佰 &#39; WHEN 7 THEN &#39;仟 &#39; WHEN 8 THEN &#39;万&#39; WHEN 9 THEN &#39; 拾&#39;</span><br><span class="line">                                           WHEN 10 THEN &#39;佰 &#39; WHEN 11 THEN &#39;仟&#39; WHEN 12 THEN &#39; 亿&#39; WHEN 13 THEN &#39;拾 &#39; WHEN 14 THEN &#39;佰&#39; WHEN 15 THEN &#39;仟&#39; WHEN 16 THEN &#39; 万&#39; ELSE &#39;&#39;</span><br><span class="line">       END</span><br><span class="line">       SET @UpperCASEStr &#x3D; @UpperPart + @UpperCASEStr</span><br><span class="line">       SET @RowCount &#x3D; @RowCount + 1</span><br><span class="line">END</span><br><span class="line">IF ( 0 &#x3D; @Scale )</span><br><span class="line">BEGIN</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零拾 &#39;,&#39; 零&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零佰 &#39;,&#39; 零&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零仟 &#39;,&#39; 零&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零零零 &#39;,&#39; 零&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零零 &#39;,&#39; 零&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零角零分 &#39;,&#39; 整&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零分 &#39;,&#39; 整&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零角 &#39;,&#39; 零&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零亿零万零元 &#39;,&#39; 亿元&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;亿零万零元 &#39;,&#39; 亿元&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零亿零万 &#39;,&#39; 亿&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零万零元 &#39;,&#39; 万元&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;万零元 &#39;,&#39; 万元&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零亿 &#39;,&#39; 亿&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零万 &#39;,&#39; 万&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零元 &#39;,&#39; 元&#39;)</span><br><span class="line">       SET @UpperCASEStr &#x3D; REPLACE(@UpperCASEStr ,&#39;零零 &#39;,&#39; 零&#39;)</span><br><span class="line">END</span><br><span class="line">-- 对壹元以下的金额的处理</span><br><span class="line">IF ( &#39;元&#39; &#x3D; substring(@UpperCASEStr ,1, 1))</span><br><span class="line">BEGIN</span><br><span class="line">       SET @UpperCASEStr &#x3D; substring(@UpperCASEStr ,2,( LEN(@UpperCASEStr ) - 1))</span><br><span class="line">END</span><br><span class="line">IF ( &#39;零&#39; &#x3D; substring(@UpperCASEStr ,1, 1))</span><br><span class="line">BEGIN</span><br><span class="line">       SET @UpperCASEStr &#x3D; substring(@UpperCASEStr ,2,( LEN(@UpperCASEStr ) - 1))</span><br><span class="line">END</span><br><span class="line">IF ( &#39;角&#39; &#x3D; substring(@UpperCASEStr ,1, 1))</span><br><span class="line">BEGIN</span><br><span class="line">SET @UpperCASEStr &#x3D; substring(@UpperCASEStr ,2,( LEN(@UpperCASEStr ) - 1))</span><br><span class="line">END</span><br><span class="line">IF ( &#39;分&#39; &#x3D; substring(@UpperCASEStr ,1, 1))</span><br><span class="line">BEGIN</span><br><span class="line">       SET @UpperCASEStr &#x3D; substring(@UpperCASEStr ,2,( LEN(@UpperCASEStr ) - 1))</span><br><span class="line">END</span><br><span class="line">IF (&#39; 整&#39; &#x3D; substring (@UpperCASEStr, 1,1 ))</span><br><span class="line">BEGIN</span><br><span class="line">       SET @UpperCASEStr &#x3D; &#39;零元整&#39;</span><br><span class="line">END</span><br><span class="line">       RETURN @UpperCASEStr</span><br><span class="line">END</span><br></pre></td></tr></table></figure></li>
+<li><p>获取指定时间段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">--本周的第一天</span><br><span class="line">SELECT DATEADD (WK, DATEDIFF( WK, 0 , GETDATE ()), 0)   </span><br><span class="line"> </span><br><span class="line">--本年的第一天</span><br><span class="line">SELECT DATEADD (YY, DATEDIFF( YY, 0 , GETDATE ()), 0)   </span><br><span class="line"> </span><br><span class="line">--本季度的第一天</span><br><span class="line">SELECT DATEADD (QQ, DATEDIFF( QQ, 0 , GETDATE ()), 0)    </span><br><span class="line"> </span><br><span class="line">--当天的凌晨</span><br><span class="line">SELECT DATEADD (DD, DATEDIFF( DD, 0 , GETDATE ()), 0)   </span><br><span class="line"> </span><br><span class="line">--上个月的最后一天</span><br><span class="line">SELECT DATEADD (MS, -3 , DATEADD (MM, DATEDIFF( MM, 0 , GETDATE ()), 0))   </span><br><span class="line"> </span><br><span class="line">--上一年的最后一天</span><br><span class="line">SELECT DATEADD (MS, -3 , DATEADD (YY, DATEDIFF( YY, 0 , GETDATE ()), 0))   </span><br><span class="line"> </span><br><span class="line">--本月的第一天</span><br><span class="line">SELECT DATEADD (MM, DATEDIFF( MM, 0 , GETDATE ()), 0)   </span><br><span class="line"> </span><br><span class="line">--本月的最后一天</span><br><span class="line">SELECT DATEADD (MS, -3 , DATEADD (MM, DATEDIFF( M, 0 , GETDATE ())+1, 0)) </span><br><span class="line"> </span><br><span class="line">--本年的最后一天</span><br><span class="line">SELECT DATEADD (MS, -3 , DATEADD (YY, DATEDIFF( YY, 0 , GETDATE ())+1, 0)) </span><br><span class="line"> </span><br><span class="line">--本月的第一个星期一 </span><br><span class="line">SELECT DATEADD (WK, DATEDIFF( WK, 0 , DATEADD (DD, 6 - DATEPART(DAY , GETDATE()), GETDATE())), 0 )</span><br></pre></td></tr></table></figure></li>
+<li><p>Split函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">CREATE FUNCTION F_SQLSERVER_SPLIT(@Long_str varchar(8000),@split_str varchar(100))    </span><br><span class="line">RETURNS  @tmp TABLE(        </span><br><span class="line">    ID          inT     IDENTITY PRIMARY KEY,      </span><br><span class="line">    short_str   varchar(8000)    </span><br><span class="line">)    </span><br><span class="line">AS   </span><br><span class="line">BEGIN   </span><br><span class="line">    DECLARE @long_str_Tmp varchar(8000),@short_str varchar(8000),@split_str_length int   </span><br><span class="line">    SET @split_str_length &#x3D; LEN(@split_str)    </span><br><span class="line">    IF CHARINDEX(@split_str,@Long_str)&#x3D;1 </span><br><span class="line">         SET @long_str_Tmp&#x3D;SUBSTRING(@Long_str,@split_str_length+1,LEN(@Long_str)-@split_str_length)</span><br><span class="line">    ELSE</span><br><span class="line">         SET @long_str_Tmp&#x3D;@Long_str</span><br><span class="line">    IF CHARINDEX(REVERSE(@split_str),REVERSE(@long_str_Tmp))&gt;1    </span><br><span class="line">        SET @long_str_Tmp&#x3D;@long_str_Tmp+@split_str    </span><br><span class="line">    ELSE   </span><br><span class="line">        SET @long_str_Tmp&#x3D;@long_str_Tmp    </span><br><span class="line">    IF CHARINDEX(@split_str,@long_str_Tmp)&#x3D;0</span><br><span class="line">        Insert INTO @tmp select @long_str_Tmp </span><br><span class="line">    ELSE</span><br><span class="line">        BEGIN</span><br><span class="line">            WHILE CHARINDEX(@split_str,@long_str_Tmp)&gt;0    </span><br><span class="line">                BEGIN   </span><br><span class="line">                    SET @short_str&#x3D;SUBSTRING(@long_str_Tmp,1,CHARINDEX(@split_str,@long_str_Tmp)-1)    </span><br><span class="line">                    DECLARE @long_str_Tmp_LEN INT,@split_str_Position_END int   </span><br><span class="line">                    SET @long_str_Tmp_LEN &#x3D; LEN(@long_str_Tmp)    </span><br><span class="line">                    SET @split_str_Position_END &#x3D; LEN(@short_str)+@split_str_length    </span><br><span class="line">                    SET @long_str_Tmp&#x3D;REVERSE(SUBSTRING(REVERSE(@long_str_Tmp),1,@long_str_Tmp_LEN-@split_str_Position_END))</span><br><span class="line">                    IF @short_str&lt;&gt;&#39;&#39; Insert INTO @tmp select @short_str    </span><br><span class="line">                END           </span><br><span class="line">        END</span><br><span class="line">    RETURN     </span><br><span class="line">END</span><br></pre></td></tr></table></figure></li>
+<li><p>获取指定的小数点后几位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CAST(ROUND ((A. NewRetailJPrice &#x2F; B. NewRetailJPrice), 3 , 1) AS NUMERIC(18 ,3))</span><br></pre></td></tr></table></figure></li>
+<li><p>拆分字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">SET ANSI_NULLS ON</span><br><span class="line">GO</span><br><span class="line">SET QUOTED_IDENTIFIER ON</span><br><span class="line">GO</span><br><span class="line">CREATE FUNCTION [dbo]. [AZ_F_Split](@str NVARCHAR( 4000),@separtor VARCHAR(10 ))  </span><br><span class="line">  RETURNS @temp TABLE ([row] [int] IDENTITY (1, 1) NOT NULL, valuess NVARCHAR(4000 ))  </span><br><span class="line">  AS   </span><br><span class="line">BEGIN </span><br><span class="line">   DECLARE @i INT  </span><br><span class="line">   SET  @str&#x3D;RTRIM (LTRIM( @str))  </span><br><span class="line">   SET  @i&#x3D;CHARINDEX (@separtor, @str)  </span><br><span class="line">   WHILE   @i&gt;&#x3D;1  </span><br><span class="line">    BEGIN </span><br><span class="line">     INSERT  @temp   VALUES(LEFT( @str,@i -1))   </span><br><span class="line">     SET  @str &#x3D;SUBSTRING( @str,@i +1, LEN( @str)-@i )  </span><br><span class="line">     SET  @i &#x3D;CHARINDEX( @separtor,@str )  </span><br><span class="line">    END </span><br><span class="line">    IF @str &lt;&gt;&#39;&#39;   </span><br><span class="line">     INSERT @temp VALUES( @str)  </span><br><span class="line">    RETURN   </span><br><span class="line">END</span><br></pre></td></tr></table></figure></li>
+<li><p>备份所有数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">DECLARE @myDataBase VARCHAR(250) --备份文件存放路径</span><br><span class="line">DECLARE @strSQL VARCHAR(5000) --拼接字符串</span><br><span class="line">DECLARE mydatabase CURSOR FOR SELECT name FROM master..SYSDATABASES</span><br><span class="line">OPEN mydatabase</span><br><span class="line">FETCH NEXT FROM mydatabase INTO @myDataBase</span><br><span class="line">WHILE @@FETCH_STATUS &#x3D; 0</span><br><span class="line">BEGIN</span><br><span class="line">IF @myDataBase NOT IN(&#39;master&#39;, &#39;tempdb&#39;, &#39;model&#39;, &#39;msdb&#39;)</span><br><span class="line">BEGIN</span><br><span class="line">SET @strSQL &#x3D; &#39;BACKUP DATABASE &#39; + @myDataBase + &#39; TO DISK &#x3D; &#39;&#39;D:\SQL数据库文件\BAK\&#39; + @myDataBase + &#39;.bak&#39;&#39;&#39;</span><br><span class="line">EXEC (@strSQL)</span><br><span class="line">END</span><br><span class="line">FETCH NEXT FROM mydatabase INTO @myDataBase</span><br><span class="line">END</span><br><span class="line">CLOSE mydatabase</span><br><span class="line">DEALLOCATE mydatabase</span><br></pre></td></tr></table></figure></li>
+<li><p>还原所有数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">DECLARE @BackPath VARCHAR( 500), @DataPath VARCHAR (500)</span><br><span class="line">SET @BackPath &#x3D; &#39;D:\SQL数据库文件\BAK&#39;</span><br><span class="line">SET @DataPath &#x3D; &#39;D:\SQL数据库文件\Data&#39;</span><br><span class="line">CREATE TABLE #FileTree</span><br><span class="line">(</span><br><span class="line">       KeyID INT IDENTITY( 1, 1 ) NOT NULL PRIMARY KEY ,</span><br><span class="line">       [FileName] VARCHAR (100),</span><br><span class="line">       Depth INT ,</span><br><span class="line">       [File] INT ,</span><br><span class="line">       FullName VARCHAR (500),</span><br><span class="line">       NotExtend VARCHAR (100)</span><br><span class="line">)</span><br><span class="line">INSERT INTO #FileTree( [FileName], Depth, [File])</span><br><span class="line">EXEC master .dbo. xp_dirtree @BackPath , 0, 1</span><br><span class="line">UPDATE A SET FullName &#x3D; @BackPath + &#39;\&#39; + FileName</span><br><span class="line">FROM #FileTree AS A</span><br><span class="line">UPDATE A SET NotExtend &#x3D; SUBSTRING( FileName, 0 , CHARINDEX (&#39;.bak&#39;, FullName, 0 ) - 1)</span><br><span class="line">FROM #FileTree AS A</span><br><span class="line">SELECT * FROM #FileTree</span><br><span class="line"> </span><br><span class="line">DROP TABLE #FileTree</span><br></pre></td></tr></table></figure></li>
+<li><p>SQLServer数据生成INSERT语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">CREATE PROCEDURE AZ_P_BD_DataToINSERTSQL</span><br><span class="line">(</span><br><span class="line">       @TabLEName VARCHAR (256)</span><br><span class="line">) </span><br><span class="line">AS </span><br><span class="line">BEGIN </span><br><span class="line">SET NOCOUNT ON</span><br><span class="line">DECLARE @sqlstr VARCHAR( 4000), @sqlstr1 VARCHAR (4000), @sqlstr2 VARCHAR(4000 ) </span><br><span class="line">SELECT @sqlstr &#x3D;&#39;SELECT &#39;&#39;INSERT &#39;+ @TabLEName, @sqlstr1&#x3D;&#39;&#39; , @sqlstr2 &#x3D;&#39; (&#39;</span><br><span class="line">SELECT @sqlstr1 &#x3D; &#39; VALUES ( &#39;&#39;+&#39;  </span><br><span class="line">SELECT @sqlstr1 &#x3D;@sqlstr1+ col+&#39;+&#39;&#39;,&#39;&#39;+&#39; ,@sqlstr2 &#x3D;@sqlstr2+ name + &#39;,&#39;</span><br><span class="line">FROM</span><br><span class="line">(</span><br><span class="line">       SELECT CASE   </span><br><span class="line">             WHEN A .xtype &#x3D; 127 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;CONVERT(VARCHAR(20),&#39; + A. name + &#39;)&#39; + &#39; END&#39;  </span><br><span class="line">             WHEN A .xtype &#x3D; 104 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;CONVERT(VARCHAR(1),&#39; + A. name + &#39;)&#39; + &#39; END&#39;  </span><br><span class="line">             WHEN A .xtype &#x3D; 175 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;+&#39;+&#39;REPLACE(&#39; + A.name + &#39;,&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;,&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;)&#39; + &#39;+&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39; + &#39; END&#39; </span><br><span class="line">             WHEN A .xtype &#x3D; 61 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;+&#39;+&#39;CONVERT(VARCHAR(23),&#39; + A.name + &#39;,121)&#39;+ &#39;+&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39; + &#39; END&#39; </span><br><span class="line">             WHEN A .xtype &#x3D; 106 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;CONVERT(VARCHAR(&#39;+CONVERT (VARCHAR( 4),a .xprec+ 2)+&#39;),&#39; + A.name + &#39;)&#39; + &#39; END&#39; </span><br><span class="line">             WHEN A .xtype &#x3D; 62 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;CONVERT(VARCHAR(23),&#39; + A. name + &#39;,2)&#39; + &#39; END&#39;  </span><br><span class="line">             WHEN A .xtype &#x3D; 56 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;CONVERT(VARCHAR(11),&#39; + A. name + &#39;)&#39; + &#39; END&#39;  </span><br><span class="line">             WHEN A .xtype &#x3D; 60 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;CONVERT(VARCHAR(22),&#39; + A. name + &#39;)&#39; + &#39; END&#39;  </span><br><span class="line">             WHEN A .xtype &#x3D; 239 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;+&#39;+&#39;REPLACE(&#39; + A.name + &#39;,&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;,&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;)&#39; + &#39;+&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39; + &#39; END&#39; </span><br><span class="line">             WHEN A .xtype &#x3D; 108 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;CONVERT(VARCHAR(&#39;+CONVERT (VARCHAR( 4),a .xprec+ 2)+&#39;),&#39; + A.name + &#39;)&#39; + &#39; END&#39; </span><br><span class="line">             WHEN A .xtype &#x3D; 231 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;+&#39;+&#39;REPLACE(&#39; + A.name + &#39;,&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;,&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;)&#39; + &#39;+&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39; + &#39; END&#39; </span><br><span class="line">             WHEN A .xtype &#x3D; 59 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;CONVERT(VARCHAR(23),&#39; + A. name + &#39;,2)&#39; + &#39; END&#39;  </span><br><span class="line">             WHEN A .xtype &#x3D; 58 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;+&#39;+&#39;CONVERT(VARCHAR(23),&#39; + A.name + &#39;,121)&#39;+ &#39;+&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39; + &#39; END&#39; </span><br><span class="line">             WHEN A .xtype &#x3D; 52 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;CONVERT(VARCHAR(12),&#39; + A. name + &#39;)&#39; + &#39; END&#39;  </span><br><span class="line">             WHEN A .xtype &#x3D; 122 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;CONVERT(VARCHAR(22),&#39; + A. name + &#39;)&#39; + &#39; END&#39;  </span><br><span class="line">             WHEN A .xtype &#x3D; 48 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;CONVERT(VARCHAR(6),&#39; + A. name + &#39;)&#39; + &#39; END&#39;   </span><br><span class="line">             WHEN A .xtype &#x3D; 167 THEN &#39;CASE WHEN &#39; + A .name + &#39; IS NULL THEN &#39;&#39;NULL&#39;&#39; ELSE &#39; + &#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;+&#39;+&#39;REPLACE(&#39; + A.name + &#39;,&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;,&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;)&#39; + &#39;+&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39; + &#39; END&#39; </span><br><span class="line">             ELSE &#39;&#39;&#39;NULL&#39;&#39;&#39;  </span><br><span class="line">             END as col, A. colid, A.name  </span><br><span class="line">       FROM syscolumns AS A where A. id &#x3D; OBJECT_ID( @TabLEName) AND A.xtype NOT IN(189, 34, 35 , 36)</span><br><span class="line">) AS A ORDER BY colid </span><br><span class="line"> </span><br><span class="line">SELECT @sqlstr &#x3D; @sqlstr + LEFT(@sqlstr2 ,LEN( @sqlstr2) - 1)+ &#39;) &#39; + LEFT(@sqlstr1, LEN(@sqlstr1 )-3) + &#39;)&#39;&#39; FROM &#39; + @TabLEName </span><br><span class="line">EXEC( @sqlstr) </span><br><span class="line">SET NOCOUNT OFF</span><br><span class="line">END</span><br></pre></td></tr></table></figure></li>
+<li><p>查表结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">表名 &#x3D;CASE WHEN A .colorder&#x3D; 1 THEN D.name ELSE &#39;&#39; END ,</span><br><span class="line">表说明 &#x3D;CASE WHEN A .colorder&#x3D; 1 THEN isnull(F .value, &#39;&#39;) ELSE &#39;&#39; END,</span><br><span class="line">字段序号 &#x3D;A. colorder,</span><br><span class="line">字段名 &#x3D;A. name,</span><br><span class="line">标识 &#x3D;CASE WHEN COLUMNPROPERTY ( A .id, A.name ,&#39;IsIdentity&#39;)&#x3D; 1 THEN &#39;√&#39; ELSE &#39;&#39; END ,</span><br><span class="line">主键 &#x3D;CASE WHEN exists( SELECT 1 FROM sysobjects where xtype &#x3D;&#39;PK&#39; and name in (</span><br><span class="line">SELECT name FROM sysindexes WHERE indid in(</span><br><span class="line">SELECT indid FROM sysindexkeys WHERE id &#x3D; A .id AND colid &#x3D;A. colid</span><br><span class="line">))) THEN &#39;√ &#39; ELSE &#39;&#39; END,</span><br><span class="line">类型 &#x3D;B. name,</span><br><span class="line">占用字节数 &#x3D;A. length,</span><br><span class="line">长度 &#x3D;COLUMNPROPERTY( A.id ,A. name,&#39;PRECISION&#39; ),</span><br><span class="line">小数位数 &#x3D;isnull( COLUMNPROPERTY(A .id, A.name ,&#39;Scale&#39;), 0),</span><br><span class="line">允许空 &#x3D;CASE WHEN A .isnullable&#x3D; 1 THEN &#39;√&#39; ELSE &#39;&#39; END,</span><br><span class="line">默认值 &#x3D;isnull( E.text ,&#39;&#39;),</span><br><span class="line">字段说明 &#x3D;isnull( G.[value] ,&#39;&#39;)</span><br><span class="line">FROM syscolumns A</span><br><span class="line">left join systypes B on A. xusertype&#x3D;B .xusertype</span><br><span class="line">inner join sysobjects D on A. id&#x3D;D .id and D .xtype&#x3D; &#39;U&#39; and D.name &lt;&gt;&#39;dtproperties&#39;</span><br><span class="line">left join syscomments E on A. cdefault&#x3D;E .id</span><br><span class="line">left join sys. extended_properties G on A.id &#x3D;G. major_id and A.colid &#x3D;G. minor_id</span><br><span class="line">left join sys. extended_properties F on D.id &#x3D;F. major_id and F. minor_id&#x3D;0</span><br><span class="line">--where D.name&#x3D;&#39;orders&#39; -- 如果只查询指定表 ,加上此条件</span><br><span class="line">order by A. id,A .colorder</span><br><span class="line"> </span><br><span class="line">SELECT  D .name AS TableName , ISNULL (F. value, &#39;&#39;) AS TableDescription , A.colorder AS ColumnSort,</span><br><span class="line">             A.name AS ColumnName, CASE WHEN COLUMNPROPERTY( A.id , A .name, &#39;IsIdentity&#39;)&#x3D; 1 THEN &#39; √&#39; ELSE &#39;&#39; END  AS IsIdentity ,</span><br><span class="line">             CASE WHEN EXISTS</span><br><span class="line">             (</span><br><span class="line">                   SELECT 1 FROM sysobjects where xtype &#x3D; &#39;PK&#39; and name in</span><br><span class="line">                   (</span><br><span class="line">                         SELECT name FROM sysindexes WHERE indid IN</span><br><span class="line">                         (</span><br><span class="line">                               SELECT indid FROM sysindexkeys WHERE id &#x3D; A . id AND colid &#x3D; A . colid</span><br><span class="line">                         )</span><br><span class="line">                   )</span><br><span class="line">             ) THEN &#39;√ &#39; ELSE &#39;&#39; END AS IsKey, B. name AS ColumnType, A.length AS ColumnLength,</span><br><span class="line">             COLUMNPROPERTY(A .id, A. name, &#39;PRECISION&#39; ) AS ColumnRealLength,</span><br><span class="line">             ISNULL(COLUMNPROPERTY (A. id, A.name , &#39;Scale&#39; ), 0) AS Scale,</span><br><span class="line">             CASE WHEN A. isnullable &#x3D; 1 THEN &#39;√&#39; ELSE &#39;&#39; END AS IsNullAble, isnull(E .text, &#39;&#39;) AS DefaultValue,</span><br><span class="line">             ISNULL(G .[value] ,&#39;&#39;) AS ColumnDescription</span><br><span class="line">FROM syscolumns A</span><br><span class="line">left join systypes B on A. xusertype &#x3D; B. xusertype</span><br><span class="line">inner join sysobjects D on A. id &#x3D; D. id and D. xtype &#x3D; &#39;U&#39; and D .name &lt;&gt;&#39;dtproperties&#39;</span><br><span class="line">left join syscomments E on A. cdefault &#x3D; E. id</span><br><span class="line">left join sys. extended_properties G on A.id &#x3D; G.major_id and A.colid &#x3D; G.minor_id</span><br><span class="line">left join sys. extended_properties F on D.id &#x3D; F.major_id and F.minor_id &#x3D; 0</span><br><span class="line">where D .name &#x3D; &#39;BASE_001_Items&#39;</span><br><span class="line">order by A. id, A.colorder</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-11T06:28:52.837Z" itemprop="dateUpdated">2020-05-11 14:28:52</time>
+</span><br>
+
+
+        
+        此网站所有内容仅表示作者个人看法,如有说得不合看官心意的请多多谅解!
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhangjunhaocloud.github.io">
+            <img src="/img/avatar.jpg" alt="张峻豪">
+            张峻豪
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MSSQL/" rel="tag">MSSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/&title=《实用SQL(MSSQL)》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/&title=《实用SQL(MSSQL)》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《实用SQL(MSSQL)》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/01/12/%E9%A9%BE%E7%85%A7/%E7%A7%91%E7%9B%AE%E4%B8%89/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">科目三(深圳市龙华牛湖考场)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/11/03/LeetCode/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AE%80%E5%8D%95/175-combine-two-tables(%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8)(%E7%AE%80%E5%8D%95)/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[175][combine-two-tables](组合两个表)(简单)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>张峻豪 &copy; 2011 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/&title=《实用SQL(MSSQL)》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/&title=《实用SQL(MSSQL)》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《实用SQL(MSSQL)》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhangjunhaocloud.github.io/2019/12/23/%E6%95%B0%E6%8D%AE%E5%BA%93/MSSQL/%E5%AE%9E%E7%94%A8SQL(MSSQL)/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'stay hungry stay foolish！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎您的光临!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

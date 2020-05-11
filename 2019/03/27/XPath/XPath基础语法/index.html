@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>XPath基础语法 | 云顶小栈 | 小栖片刻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="XPath">
+    <meta name="description" content="表达式 描述    nodename 选取此节点的所有子节点   &#x2F; 从根节点选取   &#x2F;&#x2F; 从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置   . 选取当前节点   .. 选取当前节点的父节点   @ 选取属性      路径表达式 结果    &#x2F;bookstore&#x2F;book[1] 选取属于bookstore子元素的第一个book元素   &#x2F;bookstore&#x2F;book[last">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XPath基础语法">
+<meta property="og:url" content="https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="云顶小栈">
+<meta property="og:description" content="表达式 描述    nodename 选取此节点的所有子节点   &#x2F; 从根节点选取   &#x2F;&#x2F; 从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置   . 选取当前节点   .. 选取当前节点的父节点   @ 选取属性      路径表达式 结果    &#x2F;bookstore&#x2F;book[1] 选取属于bookstore子元素的第一个book元素   &#x2F;bookstore&#x2F;book[last">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-27T08:21:00.000Z">
+<meta property="article:modified_time" content="2020-05-11T03:37:51.003Z">
+<meta property="article:author" content="张峻豪">
+<meta property="article:tag" content="XPath">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张峻豪</h5>
+          <a href="mailto:zhangjunhaocloud@outlook.com" title="zhangjunhaocloud@outlook.com" class="mail">zhangjunhaocloud@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangjunhaocloud" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">XPath基础语法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">XPath基础语法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-27T08:21:00.000Z" itemprop="datePublished" class="page-time">
+  2019-03-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-XPath/XPath基础语法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">XPath基础语法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-27 16:21:00" datetime="2019-03-27T08:21:00.000Z"  itemprop="datePublished">2019-03-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">nodename</td>
+<td>选取此节点的所有子节点</td>
+</tr>
+<tr>
+<td align="center">/</td>
+<td>从根节点选取</td>
+</tr>
+<tr>
+<td align="center">//</td>
+<td>从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td>选取当前节点</td>
+</tr>
+<tr>
+<td align="center">..</td>
+<td>选取当前节点的父节点</td>
+</tr>
+<tr>
+<td align="center">@</td>
+<td>选取属性</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>路径表达式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/bookstore/book[1]</td>
+<td>选取属于bookstore子元素的第一个book元素</td>
+</tr>
+<tr>
+<td>/bookstore/book[last()]</td>
+<td>选取属于bookstore的最后一个元素</td>
+</tr>
+<tr>
+<td>/bookstore/book[last()-1]</td>
+<td>选取属于bookstore子元素的倒数第二个元素</td>
+</tr>
+<tr>
+<td>/bookstore/book[position()&lt;3]</td>
+<td>选取最前面的两个属于bookstore元素的子元素的book元素</td>
+</tr>
+<tr>
+<td>//title[@lang]</td>
+<td>选取所有拥有名为lang的属性的title元素</td>
+</tr>
+<tr>
+<td>//title[@lang=’eng’]</td>
+<td>选取所有title元素,且这些元素拥有值为eng的lang属性</td>
+</tr>
+<tr>
+<td>/bookstore/book[price&gt;35.00]</td>
+<td>选取bookstore元素的所有book元素,且其中的price元素的值须大于35.00</td>
+</tr>
+<tr>
+<td>/bookstore/book[price&gt;35.00]/title</td>
+<td>选取bookstore元素中的book元素的所有title元素,且其中的price元素的值须大于35.00</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">通配符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">*</td>
+<td>匹配任何元素节点</td>
+</tr>
+<tr>
+<td align="center">@*</td>
+<td>匹配任何属性节点</td>
+</tr>
+<tr>
+<td align="center">node()</td>
+<td>匹配任何类型的节点</td>
+</tr>
+</tbody></table>
+<p>注:通过在路径表达式中使用”|”运算符，您可以选取若干个路径 例如：//title | //price 选取文档中的所有title和price元素</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-11T03:37:51.003Z" itemprop="dateUpdated">2020-05-11 11:37:51</time>
+</span><br>
+
+
+        
+        此网站所有内容仅表示作者个人看法,如有说得不合看官心意的请多多谅解!
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhangjunhaocloud.github.io">
+            <img src="/img/avatar.jpg" alt="张峻豪">
+            张峻豪
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XPath/" rel="tag">XPath</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/&title=《XPath基础语法》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/&title=《XPath基础语法》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XPath基础语法》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/05/01/NET/Session-Cookie-Cache/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Session-Cookie-Cache</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/25/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%80%9A%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%B3%95%E5%88%99/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">通用设计法则</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>张峻豪 &copy; 2011 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/&title=《XPath基础语法》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/&title=《XPath基础语法》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XPath基础语法》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhangjunhaocloud.github.io/2019/03/27/XPath/XPath%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'stay hungry stay foolish！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎您的光临!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

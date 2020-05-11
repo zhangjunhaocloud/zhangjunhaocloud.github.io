@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>常用绑定 | 云顶小栈 | 小栖片刻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="knockout">
+    <meta name="description" content="ol li{     margin:8px; }   Visible绑定Visible绑定通过绑定一个值来确定DOM元素显示或隐藏1eg：&lt;div data-bind&#x3D;&quot;visible:myValues().length&gt;0&quot;&gt;&lt;&#x2F;div&gt; Text绑定Text绑定主要是让DOM元素显示参数值12eg：&lt;div data">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用绑定">
+<meta property="og:url" content="https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/index.html">
+<meta property="og:site_name" content="云顶小栈">
+<meta property="og:description" content="ol li{     margin:8px; }   Visible绑定Visible绑定通过绑定一个值来确定DOM元素显示或隐藏1eg：&lt;div data-bind&#x3D;&quot;visible:myValues().length&gt;0&quot;&gt;&lt;&#x2F;div&gt; Text绑定Text绑定主要是让DOM元素显示参数值12eg：&lt;div data">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-01-01T03:14:00.000Z">
+<meta property="article:modified_time" content="2020-05-11T07:13:36.649Z">
+<meta property="article:author" content="张峻豪">
+<meta property="article:tag" content="knockout">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张峻豪</h5>
+          <a href="mailto:zhangjunhaocloud@outlook.com" title="zhangjunhaocloud@outlook.com" class="mail">zhangjunhaocloud@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangjunhaocloud" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">常用绑定</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">常用绑定</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-01T03:14:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-knockout/常见绑定"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">常用绑定</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-01-01 11:14:00" datetime="2017-01-01T03:14:00.000Z"  itemprop="datePublished">2017-01-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <style>
+ol li{
+    margin:8px;
+}
+</style>
+<ol>
+<li>Visible绑定<br>Visible绑定通过绑定一个值来确定DOM元素显示或隐藏<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg：&lt;div data-bind&#x3D;&quot;visible:myValues().length&gt;0&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure></li>
+<li>Text绑定<br>Text绑定主要是让DOM元素显示参数值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eg：&lt;div data-bind&#x3D;&quot;text:myMessage&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">eg：&lt;select data-bind&#x3D;&quot;foreach:items&quot;&gt;&lt;option&gt;Item&lt;!-- text:name--&gt;&lt;!--&#x2F;ko--&gt;&lt;&#x2F;option&gt;&lt;&#x2F;select&gt;</span><br></pre></td></tr></table></figure></li>
+<li>html绑定<br>html绑定到DOM元素上，使得该元素显示的HTML值为你绑定的参数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">eg：&lt;div data-bind&#x3D;&quot;html:details&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var viewModel &#x3D; &#123;</span><br><span class="line">details:ko.observable(&quot;&lt;em&gt;For further details.view the report &lt;a href&#x3D;&#39;report.html&#39;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;em&gt;&quot;)</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></li>
+<li>CSS类名绑定<br>css绑定是添加或删除一个或多个CSS class到DOM元素上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">eg：&lt;div data-bind&#x3D;&quot;css:&#123;profitWarning:currentProfit()&gt;0&#125;&quot;&gt;Profit information&lt;&#x2F;div&gt;</span><br><span class="line">注：</span><br><span class="line">1、如果需要绑定多个类</span><br><span class="line">eg：&lt;div data-bind&#x3D;&quot;css:&#123;profitWarning:currentProfit()&gt;0,otherCss:isTrue&#125;&quot;&gt;Profit information&lt;&#x2F;div&gt;</span><br><span class="line">2、当应用的名字不是合法变量名时</span><br><span class="line">eg：&lt;div data-bind&#x3D;&quot;css:&#123;&#39;my-class&#39;:someValue&#125;&quot;&gt;...&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure></li>
+<li>Style绑定是添加或删除一个或多个DOM元素上的style值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg：&lt;div data-bind&#x3D;&quot;style:&#123;color:currentProfit()&lt;0?&#39;red&#39;:&#39;black&#39;&#125;&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure></li>
+<li>Attr属性绑定<br>这个绑定可以用于给DOM元素添加自定义属性或绑定到已有的属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg：&lt;a data-bind&#x3D;&quot;attr:&#123;href:url,title:details&#125;&quot;&gt;Report&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure></li>
+<li>foreach绑定<br>使用此功能可以方便我们循环遍历输出某个数组、集合中的内容<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">eg：</span><br><span class="line">&lt;table&gt;</span><br><span class="line">&lt;thead&gt;</span><br><span class="line">&lt;tr&gt;&lt;th&gt;First Name&lt;&#x2F;th&gt;&lt;th&gt;Last Name&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;thead&gt;</span><br><span class="line">&lt;tbody data-bind&#x3D;&quot;foreach:people&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td data-bind&#x3D;&quot;text:firstName&quot;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">&lt;td data-bind&#x3D;&quot;text:lastName&quot;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;tbody&gt;</span><br><span class="line">&lt;table&gt;</span><br><span class="line">注：</span><br><span class="line">$index:表示序号</span><br><span class="line">$data:表示数据</span><br><span class="line">$parent:可用于调用foreach之外的属性</span><br></pre></td></tr></table></figure></li>
+<li>if binding和if not binding<br> 使用if binding可以控制某个组件动态显示，类似visible属性</li>
+<li>with binding<br> 用来重新定义一个上下文绑定</li>
+<li>click绑定<br>click绑定在DOM元素上添加事件句柄以便元素被点击的时候执行定义的javascript函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">eg：&lt;button data-bind&#x3D;&quot;click:incrementClickCounter&quot;&gt;Click me&lt;&#x2F;button&gt;</span><br><span class="line">注：</span><br><span class="line">禁止冒泡的写法</span><br><span class="line">&lt;div data-bind&#x3D;&quot;click:myDivHandler&quot;&gt;</span><br><span class="line">&lt;button data-bind&#x3D;&quot;click:myButtonHandler,clickBubble:false&quot;&gt;</span><br><span class="line">Click me</span><br><span class="line">&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">正常情况下会先执行myButtonHandler，然后冒泡执行myDivHandler,设置clickBubble:false后，则会禁止冒泡myDivHandler</span><br></pre></td></tr></table></figure></li>
+<li>event绑定<br>event绑定在DOM元素上添加指定的事件句柄以便元素被触发的时候执行定义的javascript函数，大部分情况下是用在keypress,mouseover和mouseout上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">eg：</span><br><span class="line">&lt;div&gt;</span><br><span class="line">&lt;div data-bind&#x3D;&quot;event:&#123;mouseover:enableDetails,mouseout:disableDetails&#125;&quot;&gt;</span><br><span class="line">Mouse over me</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure></li>
+<li>submit绑定<br>submit绑定在form表单上添加指定的句柄以便该form被提交的时候执行定义的javascript函数.只能用在表单  form元素上，当你使用submit绑定的时候，knockout会阻止form表单默认的submit动作。<br>注：在form上，你可以使用click绑定代替submit绑定。不过submit可以handle其他的submit行为，比如在输入框里输入回车的时候可以提交表单  </li>
+<li>value绑定<br>value绑定是关联DOM元素的值到view model的属性上。主要是用在表单控件&lt;input&gt;、&lt;select&gt;、&lt;textarea&gt;上<br>注：如果你在checkbox或radio button上使用checked绑定来读取或写入元素的checked状态，而不是value值的绑定<br>valueUpdate：如果你使用valueUpdate参数，那就是意味着KO将使自定义的事件而不是默认的离开焦点事件<br>change——当失去焦点的时候更新view model，或者是&lt;select&gt;元素被选择的时候<br>keyup——当用户敲完一个字符以后立即更新view model<br>keypress——当用户正在敲一个字符但没有释放键盘的时候就立即更新view model.<br>afterkeydown——当用户开始输入字符的时候就更新view model(最佳属性)  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg:&lt;p&gt;Your value:&lt;input data-bind&#x3D;:&quot;value:someValue, valueUpdate:&#39;afterkeydown&#39;&quot;&#x2F;&gt;&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure></li>
+<li>&lt;select&gt;常用data-bind参数<br>options:指向数组或ko.observableArray()，KO会将数组元素转换为下拉选项。如果是ko.observableArray(),当动态增加或移除阵列元素时，下拉选项会马上跟着增减<br>optionsText,optionsValue:用来产生下拉选项的数组元素可以是具有多个属性的javascript对象，通过optionsText,optionsValue设置属性名称字符串<br>value：指向ViewModel的特定属性，属性一般以ko.observable()声明<br>selectedOptions:针对可多选(multiple)的&lt;select&gt;,selectedOptions可绑定到ko.observableArray()类型属性，该数组会即时反应使用者选取的项目集合  </li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-11T07:13:36.649Z" itemprop="dateUpdated">2020-05-11 15:13:36</time>
+</span><br>
+
+
+        
+        此网站所有内容仅表示作者个人看法,如有说得不合看官心意的请多多谅解!
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhangjunhaocloud.github.io">
+            <img src="/img/avatar.jpg" alt="张峻豪">
+            张峻豪
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/knockout/" rel="tag">knockout</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/&title=《常用绑定》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/&title=《常用绑定》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《常用绑定》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">简单概要</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2013/11/07/%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7/%E5%88%A9%E7%94%A8Inno-Setup%E5%88%B6%E4%BD%9CDevExpress%E5%AE%89%E8%A3%85%E5%8C%85/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">利用Inno Setup制作DevExpress安装包</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>张峻豪 &copy; 2011 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/&title=《常用绑定》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/&title=《常用绑定》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《常用绑定》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'stay hungry stay foolish！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎您的光临!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

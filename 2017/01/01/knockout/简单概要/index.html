@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>简单概要 | 云顶小栈 | 小栖片刻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="knockout">
+    <meta name="description" content="ol li{     margin:8px; }  主要学习地址: 互动式教学地址:http:&#x2F;&#x2F;learn.knockoutjs.com&#x2F; 在线实例:http:&#x2F;&#x2F;knockoutjs.com&#x2F;examples&#x2F; 帮助文档:http:&#x2F;&#x2F;knockoutjs.com&#x2F;documentation&#x2F;introduction.html  核心功能: 属性监控与依赖跟踪 声明式绑定 模版机制  Mod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单概要">
+<meta property="og:url" content="https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/index.html">
+<meta property="og:site_name" content="云顶小栈">
+<meta property="og:description" content="ol li{     margin:8px; }  主要学习地址: 互动式教学地址:http:&#x2F;&#x2F;learn.knockoutjs.com&#x2F; 在线实例:http:&#x2F;&#x2F;knockoutjs.com&#x2F;examples&#x2F; 帮助文档:http:&#x2F;&#x2F;knockoutjs.com&#x2F;documentation&#x2F;introduction.html  核心功能: 属性监控与依赖跟踪 声明式绑定 模版机制  Mod">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-01-01T04:34:00.000Z">
+<meta property="article:modified_time" content="2020-05-11T07:08:10.219Z">
+<meta property="article:author" content="张峻豪">
+<meta property="article:tag" content="knockout">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张峻豪</h5>
+          <a href="mailto:zhangjunhaocloud@outlook.com" title="zhangjunhaocloud@outlook.com" class="mail">zhangjunhaocloud@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangjunhaocloud" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">简单概要</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">简单概要</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-01T04:34:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主要学习地址"><span class="post-toc-number">1.</span> <span class="post-toc-text">主要学习地址:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#核心功能"><span class="post-toc-number">2.</span> <span class="post-toc-text">核心功能:</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-knockout/简单概要"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">简单概要</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-01-01 12:34:00" datetime="2017-01-01T04:34:00.000Z"  itemprop="datePublished">2017-01-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <style>
+ol li{
+    margin:8px;
+}
+</style>
+<h3 id="主要学习地址"><a href="#主要学习地址" class="headerlink" title="主要学习地址:"></a>主要学习地址:</h3><ol>
+<li>互动式教学地址:<a href="http://learn.knockoutjs.com/" target="_blank" rel="noopener">http://learn.knockoutjs.com/</a></li>
+<li>在线实例:<a href="http://knockoutjs.com/examples/" target="_blank" rel="noopener">http://knockoutjs.com/examples/</a></li>
+<li>帮助文档:<a href="http://knockoutjs.com/documentation/introduction.html" target="_blank" rel="noopener">http://knockoutjs.com/documentation/introduction.html</a></li>
+</ol>
+<h3 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能:"></a>核心功能:</h3><ol>
+<li>属性监控与依赖跟踪</li>
+<li>声明式绑定</li>
+<li>模版机制</li>
+</ol>
+<p>Model-View-View Model(MVVM)是一种创建用户界面的设计模式.通过它只要将UI界面分成以下3个部分,就可以使复杂的界面变得简单  </p>
+<ol>
+<li>Model——用于存储你应用程序数据,这些数据表示你业务领域的对象和数据操作,并且独立于任何界面.当使用KO的时候,通用是使用Ajax向服务器请求数据来读书这个数据模型.</li>
+<li>View Model——纯粹用于描述数据内容和页面操作的数据模型.注意:这不是UI本身,它不具有任何按钮和显示样式的概念.这不是持久化的数据模型-它仅是用户当前使用的未保存的数据.当使用KO时,你的View Model(数据模型)是纯粹不包含HTML知识的Javascript对象,保持View Model(数据模型)抽象在使用时可以保持简单,因此你可以更简单的操作更复杂的行为.</li>
+<li>View——代表View Model状态的一个可见、互动的UI界面.它主要用于显示View Model的数据信息、发送用户命令以及在View Model发生变化时保持自动更新</li>
+</ol>
+<p>简单的应用Knockout的实例</p>
+<ol>
+<li>创建View Model——var myViewModel = {personName:”Bob”,personAge:28};</li>
+<li>创建简单视图声明式绑定——the name is &lt;span data-bind=”text:personName”&gt;&lt;/span&gt;</li>
+<li>激活Knockout——ko.applyBindings(myViewmodel);　　<br>注:激活可以放在文档底部,或放在DOM处理完成诸如JQuery的$函数方法中</li>
+</ol>
+<p>如果你想发现并响应一个对象的改变,就应该用监控属性(observables).如果你想发现并响应一个集合的变化,就该用监控属性数组(observableArray)<br>例如:<br>//绑定一个集合<br>var myObservableArray = ko.observableArray();<br>myObservableArray.push(“Some Value”);<br>myObservableArray.push(“Other Value”);  </p>
+<p>计算属性——Computed Observable<br>需求:现有监控属性firstName和lastName,需要实现新属性fullName监控(PS:新属性由firstName和lastName组合而成)  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function AppViewModel()</span><br><span class="line">&#123;</span><br><span class="line">    this.firstName&#x3D;ko.observable(&quot;Bob&quot;);</span><br><span class="line">    this.lastName&#x3D;ko.observable(&quot;Smith&quot;);</span><br><span class="line"></span><br><span class="line">    this.fullName&#x3D;ko.computed(function()&#123;</span><br><span class="line">        return this.firstName() + this.lastName();</span><br><span class="line">    &#125;,this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需求：在上面实例基础上，使fullName可读写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function AppViewModel()</span><br><span class="line">&#123;</span><br><span class="line">    this.firstName&#x3D;ko.observable(&quot;Bob&quot;);</span><br><span class="line">    this.lastName&#x3D;ko.observable(&quot;Smith&quot;);</span><br><span class="line"></span><br><span class="line">    this.fullName&#x3D;ko.computed(&#123;</span><br><span class="line">        read:function()&#123;return this.firstName() + &quot; &quot; + this.lastName();&#125;,</span><br><span class="line">        write:function(value)&#123;</span><br><span class="line">            var lastSpacePos&#x3D;value.lastIndexOf(&quot; &quot;);</span><br><span class="line">            if(lastSpacePos&gt;0)&#123;</span><br><span class="line">                this.firstName(value.substring(0,lastSpacePos));</span><br><span class="line">                this.lastName(value.substring(lastSpacePos+1));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        owner:this</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一般的数据绑定有三种：One-Time, One-Way,Two-Way  </p>
+<ol>
+<li>One-Time：从viewModel绑定到UI这一层只进行一次绑定，程序不会继续追踪数据的两者中任何一方的变化，这种绑定方式常使用于报表数据  </li>
+<li>One-Way：即为单向绑定，只有当viewModel中数据发生变化，UI中的数据也将会随之发生变化</li>
+<li>Two-Way：即为双向绑定，无论数据在Object或者是UI中发生变化，应用程序将会更新另一方，这是最灵活的绑定方式，同时代价也是最大的。  </li>
+</ol>
+<p>注：如果值是通过ko.observale定义的说明是双向绑定，否则为One-Time绑定，在knockout不存在单向绑定。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-11T07:08:10.219Z" itemprop="dateUpdated">2020-05-11 15:08:10</time>
+</span><br>
+
+
+        
+        此网站所有内容仅表示作者个人看法,如有说得不合看官心意的请多多谅解!
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhangjunhaocloud.github.io">
+            <img src="/img/avatar.jpg" alt="张峻豪">
+            张峻豪
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/knockout/" rel="tag">knockout</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/&title=《简单概要》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/&title=《简单概要》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《简单概要》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">正则表达式基础</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/01/knockout/%E5%B8%B8%E8%A7%81%E7%BB%91%E5%AE%9A/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">常用绑定</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>张峻豪 &copy; 2011 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/&title=《简单概要》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/&title=《简单概要》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《简单概要》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhangjunhaocloud.github.io/2017/01/01/knockout/%E7%AE%80%E5%8D%95%E6%A6%82%E8%A6%81/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'stay hungry stay foolish！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎您的光临!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

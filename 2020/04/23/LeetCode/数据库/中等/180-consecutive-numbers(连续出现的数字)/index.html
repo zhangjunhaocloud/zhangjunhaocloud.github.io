@@ -29,7 +29,7 @@
 <meta property="og:description" content="题目描述：  编写一个 SQL 查询，查找所有至少连续出现三次的数字。  +----+-----+ | Id | Num | +----+-----+ | 1  |  1  | | 2  |  1  | | 3  |  1  | | 4  |  2  | | 5  |  1  | | 6  |  2  | | 7  |  2  | +----+-----+   例如，给定上面的 Logs 表， 1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-23T01:48:00.000Z">
-<meta property="article:modified_time" content="2020-04-23T01:49:49.120Z">
+<meta property="article:modified_time" content="2020-04-23T10:55:37.700Z">
 <meta property="article:author" content="张峻豪">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="力扣">
@@ -203,6 +203,7 @@
 +-----------------+
 </pre>
 <p>解答：</p>
+<p>MSSQL</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT A.Num AS ConsecutiveNums</span><br><span class="line">FROM Logs AS A</span><br><span class="line">INNER JOIN Logs AS B ON A.Id + 1 &#x3D; B.Id AND A.Num &#x3D; B.Num</span><br><span class="line">INNER JOIN Logs AS C ON B.Id + 1 &#x3D; C.Id AND B.Num &#x3D; C.Num</span><br><span class="line">GROUP BY A.Num</span><br></pre></td></tr></table></figure>
         </div>
 
@@ -211,7 +212,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-23T01:49:49.120Z" itemprop="dateUpdated">2020-04-23 09:49:49</time>
+    最后更新时间：<time datetime="2020-04-23T10:55:37.700Z" itemprop="dateUpdated">2020-04-23 18:55:37</time>
 </span><br>
 
 

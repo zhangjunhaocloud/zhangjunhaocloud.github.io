@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Redis常规操作 | 云顶小栈 | 小栖片刻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="数据库,Redis">
+    <meta name="description" content="ol li{     margin:8px; }   常用命令行命令     命令 功能    keys * 查看所有键   dbsize 键总数   exists key 检查键是否存在   del key 删除键   expire key seconds 键过期   type key 键的数据结构类型    存储Set类型的键值 sadd set value 向set中添加元素srem se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis常规操作">
+<meta property="og:url" content="https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="云顶小栈">
+<meta property="og:description" content="ol li{     margin:8px; }   常用命令行命令     命令 功能    keys * 查看所有键   dbsize 键总数   exists key 检查键是否存在   del key 删除键   expire key seconds 键过期   type key 键的数据结构类型    存储Set类型的键值 sadd set value 向set中添加元素srem se">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-11-10T01:21:00.000Z">
+<meta property="article:modified_time" content="2020-05-11T06:27:15.873Z">
+<meta property="article:author" content="张峻豪">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张峻豪</h5>
+          <a href="mailto:zhangjunhaocloud@outlook.com" title="zhangjunhaocloud@outlook.com" class="mail">zhangjunhaocloud@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangjunhaocloud" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Redis常规操作</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Redis常规操作</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-10T01:21:00.000Z" itemprop="datePublished" class="page-time">
+  2018-11-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-数据库/Redis/Redis常规操作"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Redis常规操作</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-10 09:21:00" datetime="2018-11-10T01:21:00.000Z"  itemprop="datePublished">2018-11-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <style>
+ol li{
+    margin:8px;
+}
+</style>
+<ol>
+<li>常用命令行命令</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>keys *</td>
+<td>查看所有键</td>
+</tr>
+<tr>
+<td>dbsize</td>
+<td>键总数</td>
+</tr>
+<tr>
+<td>exists key</td>
+<td>检查键是否存在</td>
+</tr>
+<tr>
+<td>del key</td>
+<td>删除键</td>
+</tr>
+<tr>
+<td>expire key seconds</td>
+<td>键过期</td>
+</tr>
+<tr>
+<td>type key</td>
+<td>键的数据结构类型</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>存储Set类型的键值<blockquote>
+<p>sadd set value 向set中添加元素<br>srem set value 删除set中的元素value<br>spop set 随机返回并删除set中一个元素<br>smembers set 返回set中的所有元素<br>sdiff set1 set2 求set1和set2的差集<br>sdiffstore set3 set1 set2 求set1和set2的差集，并将之置入set3中<br>sinter set1 set2求set1和set2的交集<br>sinterstore set3 set1 set2 求set1和set2的交集，并将之置入set3中<br>sunion set1 set2 求set1和set2的并集<br>sunionstore set3 set1 set2 求set1和set2的并集，并将之置入set3中<br>smove set1 set2 value 将set1中的value转移到set2中<br>scard set返回set中元素的个数<br>sismember set value 判断该value是否为set中的元素<br>srandmember set返回set中随机一个value值  </p>
+</blockquote>
+</li>
+<li>存储List类型<blockquote>
+<p>lpush list value从头部向list中压入数据<br>rpush list value从尾部向list压入数据<br>linsert list before value0 value1在value0之前插入value1<br>lrange list 0 -1从头到尾打印出list的数据<br>lrem list num value0 从list中删除num个value0，从头部开始删<br>ltrim list num0 num1保留list中第num0和num1的数据(有第0个元素)，删除其他的<br>lpop list 从list头部弹出一个数据<br>rpop list从list尾部弹出一个数据<br>rpoplpush list1 list2 从list1尾部中弹出一个数据存入list2头部，并返回这个存入的数据  </p>
+</blockquote>
+</li>
+<li>存储string类型<blockquote>
+<p>存储string类型的键值对。一般形式：<br>set key value<br>setnx key value<br>setex key time value<br>setnx判断插入的键是否存在，若键不存在，返回1，成功插入；若存在，返回0，插入失败。如果不用setnx用set的话，若插入内容的键已经存在，那么此次插入的值将会覆盖原先的这个键对应的值。<br>setex添加了value的存在时间time,当超过这个时间key所对应的value值将被清空，再查这个key将返回nil(即空)<br>setrange key num value0将原先key对应的value下标num及其之后的数替换为value0<br>注：相当于替换<br>例如：setrange key 9 qq.com    原来：<a href="mailto:dyc40021@126.com">dyc40021@126.com</a>  修改后：<a href="mailto:dyc40021@qq.com">dyc40021@qq.com</a><br>getrange key num0 num1 从key所对应value值的num0至num1处获取值<br>mset和mget是批量设置和获取，msetnx,msetex和mgetnx,mgetex大体功能相同<br>getset key value将原先key所对应value替换为现在的value,并返回显示原先的value<br>incrby key num 将对key所对应值进行加num操作，decrby同理<br>append key value0 在原先key所对应的value值后加上value0<br>strlen key获得key所对应字符串的长度  </p>
+</blockquote>
+</li>
+<li>存储Hash类型<blockquote>
+<p>存储Hash类型的键值<br>hset设置hash field为指定的值，如果key不存在，则先创建；get方法相似<br>hsetnx设置hash field为指定值,如果key不存在,则先创建。如果存在返回0；<br>hmset同时设置hash的多个field;<br>hincrby指定的hashfield加上给定值<br>hexists测试指定field是否存在<br>hlen返回指定hash的field数量<br>hdel删除指定hash的field<br>hkeys返回hash的所有field<br>hvalues返回hash的所有value<br>hgetall获取某个hash中全部的field和value</p>
+</blockquote>
+</li>
+<li>配置说明  </li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>daemonize</td>
+<td>如果需要在后台运行，把该项改为yes</td>
+</tr>
+<tr>
+<td>pidfile</td>
+<td>配置多个pid的地址，默认为/var/run/redis.pid</td>
+</tr>
+<tr>
+<td>bind</td>
+<td>绑定ip 设置后只接受自该ip的请求</td>
+</tr>
+<tr>
+<td>port</td>
+<td>监听端口，默认为6379</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>设置客户端连接时的超时时间，单位为秒</td>
+</tr>
+<tr>
+<td>loglevel</td>
+<td>分为4级,debug、verbose、notice、warning</td>
+</tr>
+<tr>
+<td>logfile</td>
+<td>配置log文件地址</td>
+</tr>
+<tr>
+<td>databases</td>
+<td>设置数据库的个数，默认使用的数据库为0</td>
+</tr>
+<tr>
+<td>save</td>
+<td>设置redis进行数据库镜像的频率，保存快照的频率，第一个<em>表示多长时间，第三个</em>表示扫行多少次写操作.在一定时间内执行一定数量的写操作时，自动保存快照。可设置多个条件.</td>
+</tr>
+<tr>
+<td>rdbcompression</td>
+<td>在进行镜像备份时，是否进行压缩</td>
+</tr>
+<tr>
+<td>Dbfilename</td>
+<td>镜像备份文件的文件名</td>
+</tr>
+<tr>
+<td>Dir</td>
+<td>数据库镜像备份的文件存放路径</td>
+</tr>
+<tr>
+<td>SlaveOf</td>
+<td>设置数据库为其他数据库的从数据库</td>
+</tr>
+<tr>
+<td>Masterauth</td>
+<td>主数据库连接需要的密码验证</td>
+</tr>
+<tr>
+<td>Requirepass</td>
+<td>设置登录时需要使用的密码</td>
+</tr>
+<tr>
+<td>Maxclients</td>
+<td>限制同时连接的客户数量</td>
+</tr>
+<tr>
+<td>Maxmemory</td>
+<td>设置redis能够使用的最大内存</td>
+</tr>
+<tr>
+<td>Appendonly</td>
+<td>开启append only模式</td>
+</tr>
+<tr>
+<td>appendfsync</td>
+<td>设置为appendonly.aof文件同步的频率</td>
+</tr>
+<tr>
+<td>vm-enabled</td>
+<td>是否虚拟内存的支持</td>
+</tr>
+<tr>
+<td>vm-swap-file</td>
+<td>设置虚拟内存的交换文件路径</td>
+</tr>
+<tr>
+<td>vm-max-memory</td>
+<td>设置redis使用的最大物理内存大小</td>
+</tr>
+<tr>
+<td>vm-page-size</td>
+<td>设置虚拟内存的页大小</td>
+</tr>
+<tr>
+<td>vm-pages</td>
+<td>设置交换文件的总page数量</td>
+</tr>
+<tr>
+<td>vm-max-threads</td>
+<td>设置VMIO同时使用的线程数量</td>
+</tr>
+<tr>
+<td>glueoutputbuf</td>
+<td>把小的输出缓存存放在一起</td>
+</tr>
+<tr>
+<td>hash-max-zipmap-entries</td>
+<td>设置hash的临界值</td>
+</tr>
+<tr>
+<td>activerehashing</td>
+<td>重新hash</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-11T06:27:15.873Z" itemprop="dateUpdated">2020-05-11 14:27:15</time>
+</span><br>
+
+
+        
+        此网站所有内容仅表示作者个人看法,如有说得不合看官心意的请多多谅解!
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhangjunhaocloud.github.io">
+            <img src="/img/avatar.jpg" alt="张峻豪">
+            张峻豪
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/&title=《Redis常规操作》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/&title=《Redis常规操作》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Redis常规操作》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/13/%E9%98%85%E8%AF%BB/%E8%A8%80%E8%B0%88%E6%80%9D%E6%83%B3/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">非暴力沟通</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/03/06/NET/%E7%B1%BB%E4%B8%8E%E7%B1%BB%E5%85%B3%E7%B3%BB/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">类与类关系</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>张峻豪 &copy; 2011 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/&title=《Redis常规操作》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/&title=《Redis常规操作》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Redis常规操作》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhangjunhaocloud.github.io/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'stay hungry stay foolish！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎您的光临!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

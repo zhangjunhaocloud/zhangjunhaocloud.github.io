@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>高质量代码改善C#程序的157个建议 | 云顶小栈 | 小栖片刻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="阅读,NET">
+    <meta name="description" content="正确操作字符串 A. 确保尽量少的装箱 B. 避免分配额外的内存空间 使用默认转型方法 A. 使用类型的转换运算符 B. 使用类型内置的Parse. TryParse,或者如ToString. ToDouble和ToDateTime等方法 C. 使用帮助类提供的方法 D. 使用CLR支持的转型   区别对待强制转型与as和is A. A和B彼此依靠转换操作符来完成两个类型之间的转型 B. A是B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高质量代码改善C#程序的157个建议">
+<meta property="og:url" content="https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/index.html">
+<meta property="og:site_name" content="云顶小栈">
+<meta property="og:description" content="正确操作字符串 A. 确保尽量少的装箱 B. 避免分配额外的内存空间 使用默认转型方法 A. 使用类型的转换运算符 B. 使用类型内置的Parse. TryParse,或者如ToString. ToDouble和ToDateTime等方法 C. 使用帮助类提供的方法 D. 使用CLR支持的转型   区别对待强制转型与as和is A. A和B彼此依靠转换操作符来完成两个类型之间的转型 B. A是B">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-07-18T04:19:00.000Z">
+<meta property="article:modified_time" content="2020-05-11T05:47:43.694Z">
+<meta property="article:author" content="张峻豪">
+<meta property="article:tag" content="阅读">
+<meta property="article:tag" content="NET">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张峻豪</h5>
+          <a href="mailto:zhangjunhaocloud@outlook.com" title="zhangjunhaocloud@outlook.com" class="mail">zhangjunhaocloud@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangjunhaocloud" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">高质量代码改善C#程序的157个建议</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">高质量代码改善C#程序的157个建议</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-07-18T04:19:00.000Z" itemprop="datePublished" class="page-time">
+  2017-07-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-阅读/专业书籍/高质量代码改善NET程序的157个建议"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">高质量代码改善C#程序的157个建议</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-07-18 12:19:00" datetime="2017-07-18T04:19:00.000Z"  itemprop="datePublished">2017-07-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <ol>
+<li>正确操作字符串<br> A. 确保尽量少的装箱<br> B. 避免分配额外的内存空间</li>
+<li>使用默认转型方法<br> A. 使用类型的转换运算符<br> B. 使用类型内置的Parse. TryParse,或者如ToString. ToDouble和ToDateTime等方法<br> C. 使用帮助类提供的方法<br> D. 使用CLR支持的转型  </li>
+<li>区别对待强制转型与as和is<br> A. A和B彼此依靠转换操作符来完成两个类型之间的转型<br> B. A是B的基类或B是A的基类<br> 如果类型之间都上溯到了某个共同的基类，那么根据此基类进行的转型(即基类转型为子类本身)应该使用AS，子类与子类之间的转型，则应该提供转换操作符，以便进行强制转型。<br> 基类转型为子类或子类转型为基类都应该用AS<br> 子类转型为基类用AS操作符比强制转型效率要高</li>
+<li>TryParse比Parse好<br> A. TryParse比Parse在判断执行成功时耗费时间在同一数量级，但在判断执行失败时，Parse要比TryParse耗时</li>
+<li>使用int?来确保值类型也能为null</li>
+<li>区别readonly和const的使用方法<br> A. const是一个编译期常量,readonly是一个运行时常量<br> B. const只能修饰基元类型. 枚举类型或字符串类型,readonly没有限制</li>
+<li>将0值作为枚举的默认值</li>
+<li>避免给枚举类型的元素提供显式的值</li>
+<li>习惯重载运算符</li>
+<li>创建对象时需要考虑是否实现比较器</li>
+<li>区别对待==和Equals<br>A. 对于值类型，如果类型的值相等，就应该返回True。对于引用类型，如果类型指向同一个对象，则返回True。</li>
+<li>重写Equals时也要重写GetHashCode</li>
+<li>为类型输出格式化字符串</li>
+<li>正确实现浅拷贝和深拷贝<br>浅拷贝 将对象中的所有字段复制到新的对象(副本)中。其中值类型字段的值被复制到副本中后，在副本中的修改不会影响到源对象对应的值。而引用类型的字段被复制到副本中的是引用类型的引用，而不是引用的对象，在副本中对引用类型的字段值做修改会影响到源对象本身。<br>深拷贝 将对象中的所有字段复制到新的对象。不过，无论是对象的值类型字段，还是引用类型字段，都会被重新创建并赋值，对于副本的修改，不会影响到源对象本身  </li>
+<li>使用dynamic来简化反射实现</li>
+<li>元素数量可变的情况下不应使用数组</li>
+<li>多数情况下使用foreach进行循环遍历</li>
+<li>foreach不能代替for<br>foreach存在的一个问题是：它不支持循环时对集合进行增删操作</li>
+<li>使用更有效的对象和集合初始化</li>
+<li>使用泛型集合代替非泛型集合</li>
+<li>选择正确的集合<br>A. 如果集合的数目固定并且不涉及转型，使用数组效率高，否则就使用List&lt;T&gt;<br>B. 线性表的优点是插入和删除数据效率高，缺点是查找的效率相对来说低一些</li>
+<li>确保集合的线程安全<br>A. 集合线程安全是指在多个线程上添加或删除元素时，线程之间必须保持同步</li>
+<li>避免将List&lt;T&gt;作为自定义集合类的基类</li>
+<li>迭代器应该是只读的</li>
+<li>谨慎集合属性的可写操作</li>
+<li>使用匿名类型存储LINQ查询结果<br>基本特性<br>A. 既支持简单类型也支持复杂类型。简单类型必须是一个非空初始值，复杂类型则是一个以new开头的初始化项<br>B. 匿名类型的属性是只读的，没有属性设置器，它一旦被初始化就不可更改<br>C. 如果两个匿名类型的属性值相同，那么就认为两个匿名类型相等<br>D. 匿名类型可以在循环中用作初始化器<br>E. 匿名类型支持智能感知  </li>
+<li>在查询中使用Lambda表达式</li>
+<li>理解延迟求值和主动求值之间的区别</li>
+<li>区别LINQ查询中的IEnumerable&lt;T&gt;和IQueryable&lt;T&gt;<br>A. 本地数据源用Ienumerable&lt;T&gt;，远程数据源用Iqueryable&lt;T&gt;<br>B. IEnumerable&lt;T&gt;查询的逻辑可以直接用我们自己所定义的方法，而Iqueryable&lt;T&gt;则不能使用自定义的方法，它必须先生成表达式树，查询由LINQ TO SQL引擎处理。</li>
+<li>使用LINQ取代集合中的比较器和迭代器</li>
+<li>在LINQ查询中避免不必要的迭代</li>
+<li>总是优先考虑泛型</li>
+<li>避免在泛型类型中声明静态成员</li>
+<li>为泛型参数设定约束</li>
+<li>使用default为泛型类型变量指定初始值</li>
+<li>使用FCL中的委托声明<br>Action 表示接受0个或多个参数，执行一段代码，没有任何返回值<br>Func 表示接受0个或多个输入参数，执行一段代码，带返回值<br>Predicate 表示定义一组条件并判断参数是否符合条件  </li>
+<li>使用Lambda表达式代替方法和匿名方法</li>
+<li>小心闭包中的陷阱</li>
+<li>了解委托的实质<br>A. 委托是方法指针<br>B. 委托是一个类，当对其进行实例化的时候，要将引用方法作为它的构造方法的参数  </li>
+<li>使用event关键字为委托施加保护</li>
+<li>实现标准的事件模型<br>事件模型设定<br>A. 委托类型的名称为EventHandler结束<br>B. 委托原型返回值为void<br>C. 委托原型具有两个参数：sender表示事件触发器，e表示事件参数<br>D. 事件参数的名称以EventArgs结束</li>
+<li>使用泛型参数兼容泛型接口的不可变性</li>
+<li>让接口中的泛型参数支持协变</li>
+<li>理解委托中的协变</li>
+<li>为泛型类型参数指定逆变</li>
+<li>显式释放资源需继承接口Idisposable<br>托管资源 由CLR管理分配和释放的资源，即从CLR里new出来的对象<br>非托管资源 不受CLR管理的对象，如Window内核对象，或者文件. 数据库连接. 套接字. COM对象等<br>如果类型需要显式释放资源，那么一定要继承IDispose接口  </li>
+<li>即使提供了显式释放方法，也应该在终结器中提供隐匿清理</li>
+<li>Dispose方法应允许被多次调用</li>
+<li>在Dispose模式中应提取一个受保护的虚方法</li>
+<li>在Dispose模式中应区别对待托管资源和非托管资源</li>
+<li>具有可释放字段的类型或拥有本机资源的类型应该是可释放的</li>
+<li>及时释放资源</li>
+<li>必要时应将不再使用的对象引用赋值为NULL</li>
+<li>为无用字段标注不可序列化</li>
+<li>利用定制特性减少可序列化的字段</li>
+<li>使用继承ISerializable接口更灵活地控制序列化过程</li>
+<li>实现ISerializable的子类型应负责父类的序列化</li>
+<li>用抛出异常代替返回错误代码</li>
+<li>不要在不恰当的场合下引发异常</li>
+<li>重新引发异常时使用Inner Exception</li>
+<li>避免在finally内撰写无效代码</li>
+<li>避免嵌套异常</li>
+<li>避免“吃掉”异常</li>
+<li>为循环增加Tester-Doer模式而不是将try-catch置于循环内</li>
+<li>总是处理未捕获的异常</li>
+<li>正确捕获多线程中的异常</li>
+<li>慎用自定义异常</li>
+<li>从System.Exception或其他常见的基本异常中派生异常</li>
+<li>应使用finally避免资源泄漏</li>
+<li>避免在调用栈较低的位置记录异常</li>
+<li>区分异步和多线程应用场景</li>
+<li>在线程同步中使用信号量</li>
+<li>避免锁定不恰当的同步对象</li>
+<li>警惕线程的IsBackground</li>
+<li>警惕线程不会立即启动</li>
+<li>警惕线程的优先级</li>
+<li>正确停止线程</li>
+<li>应避免线程数量过多</li>
+<li>使用ThreadPool或BackgroundWorker代替Thread</li>
+<li>用Task代替ThreadPool</li>
+<li>使用Parallel简化同步状态下Task的使用</li>
+<li>Parallel简化但不等同于Task默认行为</li>
+<li>小心 Parallel中的陷阱</li>
+<li>使用PLINQ</li>
+<li>Task中的异常处理</li>
+<li>Parallel中的异常处理</li>
+<li>区分WPF和WinForm的线程模型</li>
+<li>并行并不总是速度更快</li>
+<li>在并行方法体中谨慎使用锁</li>
+<li>不要为抽象类提供公共的构造方法</li>
+<li>可见字段应该重构为属性</li>
+<li>谨慎将数组或集合作为属性</li>
+<li>构造方法应初始化主要属性和字段</li>
+<li>区别对待override和new<br>A. 如果子类中的方法前面带有new关键字，则该方法被定义为独立于基类的方法<br>B. 如果子类中的方法前面带有override关键字，则子类的对象将调用该方法，而不可调用基类方法  </li>
+<li>避免在构造方法中调用虚成员</li>
+<li>成员应优先考虑公开基类型或接口</li>
+<li>优先考虑将基类型或接口作为参数传递</li>
+<li>用params减少重复参数</li>
+<li>重写时不应使用子类参数</li>
+<li>静态方法和实例方法没有区别</li>
+<li>使用扩展方法，向现有类型“添加”方法<br>优点：<br>A. 可以扩展密封类型<br>B. 可以扩展第三方程序集中的类型<br>C. 扩展方法可以避免不必要的尝试继承体系<br>要求：<br>A. 扩展方法必须在静态类中，且该类不能是一个嵌套类<br>B. 扩展方法必须是静态的<br>C. 扩展方法的第一个参数必须是要扩展的类型，而且必须加上this关键字<br>D. 不支持扩展属性. 事件  </li>
+<li>区分接口和抽象类的应用场合<br>区别：<br>A. 接口支持多继承，抽象类则不能<br>B. 接口可以包含方法. 属性. 索引器. 事件的签名，但不能有实现，抽象类则可以<br>C. 接口在增加新方法后，所有的继承都必须重构，否则编译不会通过，而抽象类则不需要<br>应用场合：<br>A. 如果对象存在多个功能相近且关系紧密的版本，则使用抽象类<br>B. 如果对象关系不紧密，但是若干功能拥有共同的声明，则使用接口<br>C. 抽象类合适于提供丰富功能的场合，接口则更倾向于提供单一的一组功能  </li>
+<li>区分组合和继承的应用场合</li>
+<li>用多态代替条件语句</li>
+<li>使用私有构造函数强化单例</li>
+<li>为静态类添加静态构造函数<br>静态构造方法特点：<br>A. 只被执行一次，且在第一次调用类成员之前被运行时执行<br>B. 代码无法调用它，不像实例构造方法使用new关键字就可以被执行<br>C. 没有访问标识符<br>D. 不能带任何参数  </li>
+<li>区分静态类和单例</li>
+<li>将类型标识为sealed</li>
+<li>谨慎使用嵌套类<br>使用嵌套类的原则是：当某类型需要访问另一个类型的私有成员时，才将它实现为嵌套类  </li>
+<li>用类来代码ENUM</li>
+<li>避免双向耦合</li>
+<li>将现实世界中的对象抽象为类，将可复用对象圈起来就是命名空间</li>
+<li>声明变量前考虑最大值</li>
+<li>MD5不再安全</li>
+<li>通过HASH来验证文件是否被篡改</li>
+<li>避免用非对称算法加密文件</li>
+<li>使用SSL确保通信中的数据安全</li>
+<li>使用SecureString保存密钥等机密字符串</li>
+<li>不要使用自己的加密算法</li>
+<li>为程序集指定强名称</li>
+<li>为应用程序设定运行权限</li>
+<li>以&lt;Company&gt;.&lt;Component&gt;为命名空间命名</li>
+<li>程序集不必与命名空间同名</li>
+<li>考虑在命名空间中使用复数</li>
+<li>避免用FCL的类型名称命名自己的类型</li>
+<li>用名词和名词组给类型命名</li>
+<li>用形容词组给接口命名</li>
+<li>考虑让派生类的名字以基类名字作为后缀</li>
+<li>泛型类型参数要以T作为前缀</li>
+<li>以复数命名枚举类型，以单数命名枚举元素</li>
+<li>用PascalCasing 命名公开元素</li>
+<li>考虑用类名作为属性名</li>
+<li>用camelCasing命名私有字段和局部变量</li>
+<li>有条件的使用前缀</li>
+<li>考虑使用肯定性的短语命名布尔属性</li>
+<li>优先使用后缀表示已有类型的新版本</li>
+<li>委托和事件类型应添加上级后缀</li>
+<li>事件和委托变量使用动词或形容词短语命名</li>
+<li>事件处理器命名采用组合方式</li>
+<li>使用默认的访问修饰符<br>A. 类型成员的默认修饰符为private,类中构造函数的默认修饰符为public，析构函数默认修饰符为private<br>B. 类或接口的默认修饰符为internal<br>C. 方法的默认修饰符为private<br>D. 接口成员的默认修饰符为publics<br>E. 枚举类型成员默认修饰符为public<br>F. 结构成员默认修饰符为private  </li>
+<li>不知道该不该用大括号时，就用</li>
+<li>决是提供有意义的命名</li>
+<li>方法抽象级别应在同一层次</li>
+<li>一个方法只做一件事</li>
+<li>避免过长的方法和过长的类</li>
+<li>只对外公布必要的操作</li>
+<li>重构多个相关属性为一个类</li>
+<li>不重复代码</li>
+<li>使用表驱动法避免过长的if和switch分支</li>
+<li>使用匿名方法. Lambda表达式代替方法</li>
+<li>使用事件访问器替换公开的事件成员变量</li>
+<li>最少，甚至是不要注释</li>
+<li>若抛出异常，则必须要注释</li>
+<li>不要过度设计，在敏捷中体会重构的乐趣</li>
+<li>随生产代码一起提交单元测试代码</li>
+<li>利用特性为应用程序提供多个版本</li>
+<li>从写第一个界面开始，就进行自动化测试</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-11T05:47:43.694Z" itemprop="dateUpdated">2020-05-11 13:47:43</time>
+</span><br>
+
+
+        
+        此网站所有内容仅表示作者个人看法,如有说得不合看官心意的请多多谅解!
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhangjunhaocloud.github.io">
+            <img src="/img/avatar.jpg" alt="张峻豪">
+            张峻豪
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NET/" rel="tag">NET</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%85%E8%AF%BB/" rel="tag">阅读</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/&title=《高质量代码改善C#程序的157个建议》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/&title=《高质量代码改善C#程序的157个建议》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《高质量代码改善C#程序的157个建议》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/07/18/NET/%E5%8A%A8%E6%80%81%E8%AE%BF%E9%97%AEWebService/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">动态访问WebService</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84C/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">动态访问WebService</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>张峻豪 &copy; 2011 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/&title=《高质量代码改善C#程序的157个建议》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/&title=《高质量代码改善C#程序的157个建议》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《高质量代码改善C#程序的157个建议》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhangjunhaocloud.github.io/2017/07/18/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81%E6%94%B9%E5%96%84NET%E7%A8%8B%E5%BA%8F%E7%9A%84157%E4%B8%AA%E5%BB%BA%E8%AE%AE/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'stay hungry stay foolish！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎您的光临!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

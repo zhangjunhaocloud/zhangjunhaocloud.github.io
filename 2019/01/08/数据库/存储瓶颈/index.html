@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>存储瓶颈 | 云顶小栈 | 小栖片刻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="数据库">
+    <meta name="description" content="ol li{     margin:8px; }  水平拆分表数据如何落地？ 尽量只拿一个字段做为主键，且主键用自增列则方案有二； 方案一：设计一个步长值，假如步长为9，原则上可以最多拆分成9个表 方案二：设置每个表的最大存储数量值，例如2亿  到达这个值则存到下一个表中 以业务设计的字段为主键； 方案一：整数哈希求余算法。通过计算指定字段的哈希整数值，再与数据库服务器数求余得出结果； 方案二：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="存储瓶颈">
+<meta property="og:url" content="https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/index.html">
+<meta property="og:site_name" content="云顶小栈">
+<meta property="og:description" content="ol li{     margin:8px; }  水平拆分表数据如何落地？ 尽量只拿一个字段做为主键，且主键用自增列则方案有二； 方案一：设计一个步长值，假如步长为9，原则上可以最多拆分成9个表 方案二：设置每个表的最大存储数量值，例如2亿  到达这个值则存到下一个表中 以业务设计的字段为主键； 方案一：整数哈希求余算法。通过计算指定字段的哈希整数值，再与数据库服务器数求余得出结果； 方案二：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-01-08T01:52:00.000Z">
+<meta property="article:modified_time" content="2020-05-11T06:55:18.425Z">
+<meta property="article:author" content="张峻豪">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张峻豪</h5>
+          <a href="mailto:zhangjunhaocloud@outlook.com" title="zhangjunhaocloud@outlook.com" class="mail">zhangjunhaocloud@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangjunhaocloud" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">存储瓶颈</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">存储瓶颈</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-08T01:52:00.000Z" itemprop="datePublished" class="page-time">
+  2019-01-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#水平拆分表"><span class="post-toc-number">1.</span> <span class="post-toc-text">水平拆分表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据如何落地？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">数据如何落地？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分表让人恼火的原因："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">分表让人恼火的原因：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据库的瓶颈有哪些："><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据库的瓶颈有哪些：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#引入权重的异议"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">引入权重的异议</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-数据库/存储瓶颈"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">存储瓶颈</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-08 09:52:00" datetime="2019-01-08T01:52:00.000Z"  itemprop="datePublished">2019-01-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <style>
+ol li{
+    margin:8px;
+}
+</style>
+<h3 id="水平拆分表"><a href="#水平拆分表" class="headerlink" title="水平拆分表"></a>水平拆分表</h3><h4 id="数据如何落地？"><a href="#数据如何落地？" class="headerlink" title="数据如何落地？"></a>数据如何落地？</h4><ol>
+<li>尽量只拿一个字段做为主键，且主键用自增列则方案有二；<br> 方案一：设计一个步长值，假如步长为9，原则上可以最多拆分成9个表<br> 方案二：设置每个表的最大存储数量值，例如2亿  到达这个值则存到下一个表中</li>
+<li>以业务设计的字段为主键；<br> 方案一：整数哈希求余算法。通过计算指定字段的哈希整数值，再与数据库服务器数求余得出结果；<br> 方案二：一致性哈希算法</li>
+</ol>
+<blockquote>
+<p>启迪：</p>
+</blockquote>
+<ol>
+<li>数据库的读写分离不是简单的把主库数据导入到读库里就能解决问题，读数据库和写数据的分离的目的是为了让读和写操作不能互相影响效率</li>
+<li>解决读的瓶颈问题的本质就是减少数据的检索范围，数据检索的范围越小，读的效率也就越高</li>
+<li>数据库的垂直拆分和水平拆分首先不应该从技术角度进行，而是通过业务角度进行，如果数据库进行业务角度的水平拆分，那么拆分的维护往往是要根据该表的某个字段进行的，这个字段选择要有一定原则，这个原则主要是该字段的维度的粒度不能过细，该字段的维度范围不能经常的动态发生变化，最后就是该维度不能让数据分布严重失衡</li>
+</ol>
+<h4 id="分表让人恼火的原因："><a href="#分表让人恼火的原因：" class="headerlink" title="分表让人恼火的原因："></a>分表让人恼火的原因：</h4><ol>
+<li>一个数据库其实容纳多少张表是有一定限制的，就算没有超过这个限制，如果原库本来有30张表，我们拆分后变成60张，接着是120张，那么数据库本身管理这么多表也会消耗很多性能，因此公司的DBA往往会控制那些过多表的行为</li>
+<li>每次拆表后，都会牵涉到历史数据的迁移问题，这个迁移风险很大，迁移方案如果设计的不完善可能会导致数据丢失或者损坏，如果关键数据发生了丢失和损坏，结果可能非常致命。因此在设计数据库分表方案时我们要尽量让受影响范围变得最小</li>
+<li>每次拆表和分表都会让系统的相关方绷紧神经，方案执行后，会有很长时间的监控和观察期</li>
+<li>为了保证新方案执行后确保系统没有问题，我们常常会让新旧系统并行运行一段时间，这样可以保证如果新方案出现问题，问题的影响最低，但是这种做法有一个恶果就是会导致数据迁移方案进行动态调整，从而增加迁移数据的风险</li>
+</ol>
+<h4 id="数据库的瓶颈有哪些："><a href="#数据库的瓶颈有哪些：" class="headerlink" title="数据库的瓶颈有哪些："></a>数据库的瓶颈有哪些：</h4><ol>
+<li>数据库的连接数不够用。换句话说就是在同一时间内，要求和数据库建立连接的请求超出了数据库所允许的最大连接数，如果我们对超出的连接数没有进行有效的控制让它们直接落到了数据库上，那么就有可能会让数据库不堪重负，那么我们就得要分散这些连接，或者让请求排队</li>
+<li>对于数据库表的操作无非两种一种是写操作，一种是读操作，在现实场景下很难出现读写都成问题的事情，往往是其中一种表的操作出现了瓶颈问题所引起的，由于读和写都是操作同一介质，这就导致如果我们不对介质进行拆分去单独解决读的问题或者写的问题会让问题变得复杂化，最后很难从根本上解决问题</li>
+<li>实时计算和海量数据的矛盾。本系统讲存储瓶颈问题其实有一个范畴，那就是本系列讲到的手段都是在使用关系数据库来完成实时计算的业务场景，而现实中，数据库里表的数据都会随着时间推移而不断增长，当表的数据超出了一定规模后，受制于计算机硬盘、内存以及CPU本身的能力，我们很难完成这些数据的实时处理，因此我们就必须采取新的手段解决这些问题</li>
+<li>当数据库所在服务器的硬件有很大提升时候，我们可以优先考虑是否可以通过提升硬件性能的手段来提升数据库的性能</li>
+</ol>
+<h4 id="引入权重的异议"><a href="#引入权重的异议" class="headerlink" title="引入权重的异议"></a>引入权重的异议</h4><ol>
+<li>不管什么系统引入权重都是把问题复杂化的操作，权重往往都是权益之计，如果随着时间推移还要进一步扩展权重算法，那么问题就变得越加复杂了，而且权重是很难进行合理处理的，权重如果还要演进会变得异常复杂，这个复杂度可能会远远超出分布式系统，数据拆分本身的难度，因此除非迫不得已我们还是尽量不去使用什么权重，就算有权重也不要轻易使用，看有没有方式可以消除权重的根本问题</li>
+<li>如果我们的系统后台数据库都是使用独立服务器，那么一般都会让最好的服务器服务于数据库，这个做法本身就说明了数据库的重要性，而且我们对数据库的任何分库分表的解决方案都会很麻烦，很繁琐甚至很危险，因此本篇开始提出了如果我们解决瓶颈问题前先考虑下硬件的问题，如果硬件可以解决掉的问题，优先采取硬件方案，这就说明我们合理对待存储问题的前提就是让数据库的硬件跟上时代的要求，那么如果有引起硬件出现了性能瓶颈，是不是我们忽略了硬件的重要性</li>
+<li>均匀分布数据不仅仅可以合理利用计算资源，它还会给业务操作带来好处，那么我们扩展数据库时候就让各个服务器本身能力均衡，这个其实不难的，如果老的服务器实在老老了，用新服务器替换掉，虽然会有全库迁移的问题，但是这么精粒度的数据平移，那可是比任何拆分方案的数据迁移难度低的多的</li>
+</ol>
+<p>####　在每个服务器前布置一个静态Web服务器的好处</p>
+<ol>
+<li>方便日志的记录</li>
+<li>在服务端之前设立了一个安全屏障，即静态web服务器可以在必要时候过滤有害的请求</li>
+<li>可以控制流入到服务端的请求个数，当并发很高时，可以利用静态web服务器能承担更高并发的能力来缓冲服务端的压力</li>
+<li>方便我们做动静分离</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-11T06:55:18.425Z" itemprop="dateUpdated">2020-05-11 14:55:18</time>
+</span><br>
+
+
+        
+        此网站所有内容仅表示作者个人看法,如有说得不合看官心意的请多多谅解!
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhangjunhaocloud.github.io">
+            <img src="/img/avatar.jpg" alt="张峻豪">
+            张峻豪
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/&title=《存储瓶颈》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/&title=《存储瓶颈》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《存储瓶颈》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/02/25/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E9%80%9A%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%B3%95%E5%88%99/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">通用设计法则</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/26/%E6%95%B0%E6%8D%AE%E5%BA%93/SQLITE/%E5%AE%9E%E7%94%A8SQL(SQLITE)/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">实用SQL(SQLITE)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>张峻豪 &copy; 2011 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/&title=《存储瓶颈》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/&title=《存储瓶颈》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《存储瓶颈》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhangjunhaocloud.github.io/2019/01/08/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AD%98%E5%82%A8%E7%93%B6%E9%A2%88/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'stay hungry stay foolish！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎您的光临!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

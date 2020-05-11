@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>C#面试题一 | 云顶小栈 | 小栖片刻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="C#,面试">
+    <meta name="description" content="ol li{     margin:8px; } table th:first-of-type{     width:50%; } table th:nth-of-type(2){     width:50%; }   ADO.NET中常用的对象有哪些，分别描述一下答：Connection→打开数据库连接Command→执行数据库命令DataAdapter→连接数据，执行数据库命令，填充Data">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#面试题一">
+<meta property="og:url" content="https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/index.html">
+<meta property="og:site_name" content="云顶小栈">
+<meta property="og:description" content="ol li{     margin:8px; } table th:first-of-type{     width:50%; } table th:nth-of-type(2){     width:50%; }   ADO.NET中常用的对象有哪些，分别描述一下答：Connection→打开数据库连接Command→执行数据库命令DataAdapter→连接数据，执行数据库命令，填充Data">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/Foo.png">
+<meta property="og:image" content="https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/Fun.png">
+<meta property="article:published_time" content="2019-05-01T14:45:00.000Z">
+<meta property="article:modified_time" content="2020-05-11T03:28:23.489Z">
+<meta property="article:author" content="张峻豪">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/Foo.png">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张峻豪</h5>
+          <a href="mailto:zhangjunhaocloud@outlook.com" title="zhangjunhaocloud@outlook.com" class="mail">zhangjunhaocloud@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangjunhaocloud" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">C#面试题一</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">C#面试题一</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-01T14:45:00.000Z" itemprop="datePublished" class="page-time">
+  2019-05-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-面试/NET面试题一"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">C#面试题一</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-05-01 22:45:00" datetime="2019-05-01T14:45:00.000Z"  itemprop="datePublished">2019-05-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%8E%9F%E5%88%9B/">原创</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <style>
+ol li{
+    margin:8px;
+}
+table th:first-of-type{
+    width:50%;
+}
+table th:nth-of-type(2){
+    width:50%;
+}
+</style>
+<ol>
+<li>ADO.NET中常用的对象有哪些，分别描述一下<br>答：Connection→打开数据库连接<br>Command→执行数据库命令<br>DataAdapter→连接数据，执行数据库命令，填充DataSet<br>DataSet→数据在内存中的缓存，数据结构<br>DataReader→只读向前的读取数据库  </li>
+<li>DataReader和DataSet的异同<br>答：DataReader使用时始终占用SqlConnection,在线操作数据库。。任何对SqlConnection的操作都会引发DataReader的异常。。因为DataReader每次只在内存中加载一条数据，所以占用的内存是很小的。。因为DataReader的特殊性和高性能，所以DataReader是只进的。。<br>DataSet则是将数据一次性加载到内存中，抛弃数据库连接，读取完毕即放弃数据库连接。。因为DataSet将数据全部加载在内存中，所以比较消耗内存。。但是确比DataReader要更灵活。。可以动态的添加行，列数据，对数据库进行回传更新操作</li>
+<li>存储过程相比Sql语句的优缺点      </li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>提高性能，减少网络流量 → 存储过程位于服务器上，调用的时候只须传递存储过程的名称以及参数，不用每次访问都传递很长的Sql语句        更安全 → 减少Sql注入式攻击      可维护性更高 → 更新存储过程通常比更改、测试以及重新部署程序集需要的时间和精力都较少</td>
+<td>交互性差  可移植性差</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li>说出你所了解的数据库访问组件<br>答：ADO &amp; ADO.NET&amp; Microsoft Sql Server OLE DB Provider &amp; Microsoft Jet OLE DB Provider</li>
+<li>什么是装箱和拆箱<br>答：从值类型接口转换到引用类型叫装箱，从引用类型转换到值类型叫拆箱。装箱是将值类型的数据转化成引用类型，int i=3; object o = i;便是装箱过程，而拆箱是将引用类型转换值类型，比如int j = (int)o;</li>
+<li>什么是Interface?它与Abstract Class有什么区别<br>答：接口是用来定义行为规范的，不会有具体实现，而抽象类除定义行为规范包，可以有部分实现，但一个类能实现多个接口，却只能继承一个父类</li>
+<li>什么时候使用抽象类，什么时候用接口<br>答：接口用于规范，抽象类用于共性。接口中只能声明方法、属性、事件、索引器。而抽象类中可以有方法的实现，也可以定义非静态的类变量。抽象类是类，所以只能被单继承，但是接口却可以一次实现多个。抽象类可以提供某些方法的部分实现，接口不可以。抽象类的实例是它的子类给出的。接口的实例是实现接口的类给出的。抽象类中加入一个方法，那么它的子类就同时有了这个方法，而接口中加入新的方法，那么实现它的类就要重新编写。接口成员被定义为公共的，但抽象类的成员也可以是私有的、受保护的、内部的或受保护的内部成员。此外接口不能包含字段、构造函数、析构函数、静态成员或常量</li>
+<li>详述.NET里class和struct的异同<br>答：类是引用类型，可以继承类、接口和被继承，有默认的构造函数、析构函数，可以使用abstract和sealed,有protected修饰符<br>结构是值类型，只能继承接口，不能被继承，没有默认的构造函数，可以创建，没有析构函数，不可以用abstract和sealed，没有protected修饰符，可以不用new初始化</li>
+<li>C#中的接口和类有什么异同<br>答：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>异</th>
+<th>同</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>接口不包含方法的实现  接口、类和结构可从多个接口继承。但是C#只支持单继承，类只能从一个基类继承  类定义可以在不同的源文件之间进行拆分</td>
+<td>接口、类和结构可从多个接口继承  接口类似于抽象基类；继承接口的任何非抽象类型都必须实现接口的所有成员</td>
+</tr>
+</tbody></table>
+<ol start="10">
+<li>Const和readonly有什么区别<br>答：Const关键字用来声明编译时常量，readonly用来声明运行时常量</li>
+<li>用Sealed修饰的类有什么特点<br>答：用于防止从所修饰的类派生出其它类。如果一个密封类被指定为其他类的基类，则会发生编译时错误。密封类不能同时为抽象类</li>
+<li>解释virtual、sealed、override和abstract的区别<br>答：Virtual → 申明虚方法的关键字，说明该方法可以被重写<br>Sealed → 说明该类不可被继承<br>Override → 重写基类的方法<br>Abstract → 申明抽象类和抽象方法的关键字，抽象方法不提供实现，由子类实现，抽象类不可实例化  </li>
+<li>重载和覆写有什么区别<br>答：重载是方法的名称相同,不同的参数类型或不同的参数个数<br>覆写提供了子类中改变父类方法行为的实现</li>
+<li>C#中ref与out区别<br>答：    <ol>
+<li>使用ref参数量,传入的参数必须先初始化.对out而言,必须在方法中对其完成初始化  </li>
+<li>使用ref和out时,在方法的参数和执行方法时,都要加ref或out关键字</li>
+<li>Out适合用在需要return多个返回值的地方,而ref则用在需要被调用的方法修改调用者的引用的时候</li>
+</ol>
+</li>
+<li>泛型的理解<br>答：泛型:通过参数化类型来实现在同一份代码上操作多种数据类型.利用”参数化类型”将类型抽象化,从而实现灵活的复用<br>好处:类型安全和减少装箱、拆箱.提高性能、减少重复性的编程工作</li>
+<li>Private、protected、public、internal修饰符的访问权限<br>答：Private:私有成员,在类的内部才可以访问<br>Protected:保护成员,该类内部和继承类中可以访问<br>Public:公共成员,完全公开,没有访问限制<br>Internal:在同一命名空间内可以访问  </li>
+<li>New的用法<br>答：实例化对象,隐藏基类方法,泛型中new约束指定类声明中的任何类型参数都必须有公共的无参数构造函数</li>
+<li>Get和Post的区别<br>答：在Form提交的时候,如果不指定Method,则默认为Get请求,Form中提交的数据将会附加在Url之后,以?分开.字母数字字符原样发送,但空格转换为”+”号,其他符号转换为%xx,其中xx为该符号16进制表示的ASCII值.GET请求提交的数据放置在HTTP请求协议头中,而POST提交的数据则放在实体数据中.<br>在使用POST方法的情况下,传输数据时不会将数据作为URL的一部分;它们会作为一个独立的实体来传输.因此,POST方法更安全,你也可以用这个方法传输更多的数据.而且用POST传输的数据不一定要是文本,而GET方法传输的却一定是文本<br>Get是从服务器上获取数据,POST是向服务器传送数据<br>在客户端,GET方式在通过URL提交数据,数据在URL中可以看到;POST方式,数据放置在HTML HEADER内提交<br>对于GET方式,服务器端用Request.QueryString获取变量的值,对于POST方式,服务器端用Request.Form获取提交的数据<br>GET方式提交的数据最多只能有1024个字节,而POST则没有此限制<br>使用GET没有POST安全  </li>
+<li>Bind和Eval函数的区别<br>答：    <ol>
+<li>Eval单向绑定:数据是只读的</li>
+<li>Bind双向绑定:数据可以更改,并返回服务器端,服务器可以处理更改后的数据,如存入数据库</li>
+<li>绑定控件的属性时要用Bind,而Eval则是其他一些</li>
+</ol>
+</li>
+<li>Response.Redirect和Server.Transfer<br>答：请求的过程:<br>浏览器aspx文件请求→服务器执行→遇到Response.Redirect语句→服务器发送Response.Redirect后面的地址给客户端的浏览器→浏览器请求执行新的地址<br>浏览器aspx文件请求→服务器执行→遇到Server.Transfer语句→服务器转向新的文件<br>可以见Server.Transfer比Response.Redirect少了一个服务器发送回客户端再请求的过程<br>跳转对象:<br>Response.Redirect可以切换到任何存在的网页<br>Server.Transfer只能切换到同目录或子目录的网页<br>数据保密:<br>Response.Redirect后地址会变成跳转后的页面地址<br>Server.Transfer后地址不变,隐藏了新网页的地址及附带在地址后边的参数值.具有数据保密功能<br>传递的数据量:<br>Response.Redirect能够传递的数据以2KB为限<br>传递的数据超过2KB时,务必使用Server.Transfer  </li>
+<li>Server.UrlEncode、HttpUtility.UrlDecode的区别<br>答：Server.UrlEncode的编码方式是按照本地程序设置的编码方式进行编码的,而HttpUtility.UrlEncode是默认的按照.net的utf-8格式进行编码的</li>
+<li>Static和非Static的区别<br>答：用Static声明的方法和变量,不需要实例化该类就可调用</li>
+<li>如何提高.NET的性能<br>答：使用异步方式调用Web服务和远程对象<br>使用适当的Caching策略来提高性能<br>判断字符串,不要用””比较<br>页面优化<br>用完马上关闭数据库连接<br>尽量使用存储过程,并优化查询语句<br>只读数据访问用SqlDataReader,不要使用DataSet  </li>
+<li>UDP连接和TCP连接的异同<br>答：前者只管传,不管数据到不到,只须建立连接.后者保证传输的数据准确,须要连结</li>
+<li>什么叫应用程序域<br>答：应用程序域可以理解为一种轻量级进程.起到安全的作用.占用资源小</li>
+<li>O/R Mapping的原理<br>答：利用反射,配置将对象和数据库表映射</li>
+<li>解释一下ajax及实现原理<br>答：Ajax的核心是Javascript对象XmlHttpRequest,它使您可以使用Javascript向服务器提出请求并处理响应,而不阻塞用户,异步请求.</li>
+<li>请叙述属性与索引器的区别<br>答：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>索引器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通过名称标识</td>
+<td>通过签名标识</td>
+</tr>
+<tr>
+<td>通过简单名称或成员访问来访问</td>
+<td>通过元素访问来访问</td>
+</tr>
+<tr>
+<td>可以为静态成员或实例成员</td>
+<td>必须为实例成员</td>
+</tr>
+<tr>
+<td>属性的Get访问器没有参数.</td>
+<td>索引器的Get访问器具有与索引器相同的形参表</td>
+</tr>
+<tr>
+<td>属性的Set访问器包含隐式Value参数</td>
+<td>除Value参数外,索引器的Set访问器还具有与索引器相同的形参表</td>
+</tr>
+</tbody></table>
+<ol start="29">
+<li><p>描述线程与进程的区别<br>答：线程与进程二者都定义了某种边界,不同的是进程定义的是应用程序之间的边界,不同的进程之间不能共享代码和数据空间,而线程定义的是代码执行堆栈和执行上下文的边界.一个进程可以包括若干个线程,同时创建多个线程来完成某项任务,便是多线程.而同一个进程中的不同线程共享代码和数据空间.用一个比喻来说,如果一个家庭代表一个进程,在家庭内部,各个成员就是线程,家庭中的每个成员都是义务对家庭的财富进行积累,同时成有权利对家庭财富进行消费,当面对一个任务的时候,家庭也可以派出几个成员来协同完成,而家庭之外的人则没有办法直接消费不属于自己家庭的财产.</p>
+</li>
+<li><p>什么是Windows服务,它的生命周期与标准的EXE程序有什么不同<br>答：Windows服务是运行在Windows后台指定用户下的应用程序,它没有标准的UI界面,相比标准的EXE程序,Windows服务是在服务开始的时候创建,而在服务结束的时候销毁,而且可以设置服务是否与操作系统一起启动,一起关闭.它支持三种方式:1、自动方式 2、手动方式 3、禁用.自动方式的时候,Windows服务将在OS启动后自动启动运行,而手动方式则必须手工启动服务,禁用的情况下服务将不能被启动.另外标准的EXE默认使用的当前登录的用户,而Windows服务则默认使用System用户,这在对系统资源访问的时候特别需要注意</p>
+</li>
+<li><p>简述黑盒测试和白盒测试<br>答：黑盒测试:已知产品的功能设计规格,可以进行测试证明每个实现了的功能是否符合要求.<br>白盒测试:已知产品的内部工作过程,可以通过测试证明每个内部操作是否符合设计规格要求,所有内部成分是否已经过检查<br>软件的黑盒测试意味着测试要在软件的接口处进行.这种方法是把测试对象看做一个黑盒子,测试人员完全不考虑程序内部的逻辑结构和内部特性,只依据程序的需求规格说明,检查程序的功能是否符合它的功能说明.因此黑盒测试又叫功能测试或数据驱动测试.黑盒测试主要是为了发现以下几类错误:1、是否有不正确或遗漏的功能? 2、在接口上,输入是否能正确的接受?是否输出正确的结果? 3、是否有数据结构错误或外部信息(例如数据文件)访问错误? 4、性能上是否能够满足要求 5、是否有初始化或终止性错误<br>软件的白盒测试是对软件的过程性细节做细致的检查.这种方法是把测试对象看做一个打开的盒子,它允许测试人员利用程序内部的逻辑结构及有关信息,设计或选择测试用例,对程序所有逻辑路径进行测试.通过在不同点检查程序状态,确定实际状态是否与预期的状态一致.因此白盒测试又称为结构测试或逻辑驱动测试.白盒测试主要是想对程序模块进行如下检查:1、对程序模块的所有独立的执行路径至少测试一遍 2、对所有的逻辑判断,取”真”与取”假”的两种情况都能至少测一遍 3、在循环的边界和运行的界限内执行循环体 4、测试内部数据结构的有效性</p>
+</li>
+<li><p>C#各版本引入的新特性<br>答：</p>
+<ol>
+<li>C#2.0<ol>
+<li>泛型-&gt; 可以在类、方法中对使用的类型进行参数化编译时就可以保证类型安全不用做类型转换，获得一定的性能提升</li>
+<li>default关键字-&gt; 主要用在类型参数上，default(T)对于值类型，返回0，引用类型，返回null对于结构类型，会返回一个成员值全部为0的结构实例</li>
+<li>迭代器-&gt; 可以在不实现IEnumerable就可以使用foeach语句，迭代器使得遍历一些数据的时候很方便，不用去实现Current,MoveNext这些方法</li>
+<li>可空类型-&gt; 仅针对值类型，不能针对引用类型创建</li>
+<li>匿名方法-&gt; 可以在创建委托的时候直接传一个代码块过去</li>
+<li>部分类-&gt; 在申明一个类、结构或者接口的时候，用partial关键字，可以让源代码分布在不同的文件中。</li>
+<li>静态类-&gt; 静态类就是一个只能有静态成员的类，编译器能够保证静态类不会添加任何静态成员</li>
+</ol>
+</li>
+<li>C#3.0<ol>
+<li>类型推断-&gt; 申明变量的时候，可以不用直接指定类型(var)</li>
+<li>扩展方法-&gt; 扩展方法必须定义在静态类中，并且必须是非泛型、非嵌套的静态类</li>
+<li>Lamda表达式-&gt; 可以看成是对匿名方法的一个语法上的简化</li>
+<li>对象和集合的初始化</li>
+<li>匿名类型</li>
+<li>自动属性</li>
+<li>查询表达式(Linq)</li>
+<li>表达式树</li>
+</ol>
+</li>
+<li>C#4.0<ol>
+<li>协变和逆变</li>
+<li>可选参数命名参数</li>
+</ol>
+</li>
+<li>C#5.0<ol>
+<li>异步编程-&gt; async和await两个关键字，极大简化了异步编程模型</li>
+</ol>
+</li>
+<li>C#6.0<ol>
+<li>自动属性的增强-&gt; 可直接在声明的时候直接赋值</li>
+<li>空值判断</li>
+<li>字符串嵌入值-&gt; 字符串中可用{}直接嵌入变量</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>值类型与引用类型的区别?<br>答：A、赋值方式不同:将一个值类型赋给另一个值类型时将复制包含的值,引用类型变量的赋值只复制对象的引用 ,而不是复制对象本身<br>B、默认值不同,值类型默认值为0 而引用类型默认为null<br>C、值类型存储在栈中,引用类型存储在托管堆中<br>D、值类型派生自System.ValueType,引用类型派生自System.Object  </p>
+</li>
+<li><p>结构和类的区别<br>答：结构体是值类型，类是引用类型；结构不支持无参构造函数，不支持析构函数；结构常用于数据存储，类class多用于行为；类需要用new关键字实例化对象，结构可以不用；类可以为抽象类，结构不支持抽象</p>
+</li>
+<li><p>out和ref的区别与相同点<br>答：out和ref都指示编译器传递参数地址，在行为上是相同的；ref要求参数在使用之前显式初始化，out要在方法内部初始化</p>
+</li>
+<li><p>什么是拆箱和装箱<br>答：装箱就是值类型转换为引用类型，拆箱就是引用类型转换为值类型</p>
+</li>
+<li><p>解释virtual、sealed、override和abstract的区别<br>答：virtual：申明虚方法的关键字，说明该方法可以被重写<br>sealed：说明该类不可被继承<br>override：重写基类的方法<br>abstract：申明抽象类和抽象方法的关键字，抽象方法不提供实现，抽象类不可实例化  </p>
+</li>
+<li><p>接口和类的什么异同？<br>答：不同点：<br>A、接口不能直接实例化<br>B、接口只包含方法或属性的声明，不包含方法的实现<br>C、接口可以多继承，类只能单继承<br>D、类有分部类的概念，而接口没有<br>E、表达的含义不同，接口主要定义一种规范，统一调用方法。类是方法功能的实现和集合<br>相同点：<br>A、接口、类都可以从多个接口继承<br>B、接口类似于抽象基类，继承接口的任何非抽象类型都必须实现接口所有成员<br>C、接口和类都可以包含事件、索引器、方法和属性  </p>
+</li>
+<li><p>重载与覆盖的区别？<br>答：重载：当类包含两个名称相同但签名不同的方法时发生方法重载。发生在同一个类中<br>覆写：在类的继承中使用，通过覆写子类方法可以改变虚方法的实现。发生在派生类中</p>
+</li>
+<li><p>const和readonly有什么区别？<br>答：const关键字用来声明编译时常量，readonly用来声明运行时常量。区别如下：<br>A、初始化位置不同。const必须在声明的同时赋值；readonly即可以在声明处赋值，也可以在构造函数里赋值<br>B、修饰对象不同。const即可以修饰类的字段，也可以修饰局部变量；readonly只能修饰类的字段<br>C、const是编译时常量，在编译时确定该值，且值在编译时被内联到代码中；readonly是运行时常量，在运行时确定该值<br>D、const默认是静态的；而readonly如果设置成静态需要显示声明<br>E、支持的类型不同，const只能修饰基元类型或值为null的其他引用类型；readonly可以是任何类型  </p>
+</li>
+<li><p>什么是委托？事件是不是一种委托<br>答：委托类似于C或C++中的函数指针，允许将方法作为参数进行传递。C#中的委托都继承自System.Delegate类型；委托类型的声明与方法签名类似，有返回值和参数；委托是一种可以封装命名方法的引用类型，把方法当做指针传递，但委托是面向对象、类型安全的。<br>事件是一种特殊的委托</p>
+</li>
+<li><p>Mutex和Lock有何不同?一般用哪一个作为锁使用更好?<br>答：Mutex是一个基于内核模式的互斥锁,支持锁的递归调用,而Lock是一个混合锁,一般建议使用Lock更好,因为lock的性能更好</p>
+</li>
+<li><p>列举ASP.NET页面之间传递值的几种方式<br>答：1、使用QueryString 存放于地址后面  简单，显示于地址栏，长度有限<br>2、使用Session变量  简单，但易丢失<br>3、使用Server.Transfer<br>4、application 全局<br>5、cookie 简单，但可能不支持，可能被伪造<br>6、input type=”hidden” 简单，可能被伪造<br>7、数据库 稳定、安全，但性能相对弱  </p>
+</li>
+<li><p>在C#中，string str = null与string str = “” 区别<br>答：string str = null 是不给他分配内存空间，而string str = “”给它分配长度为空字符串的空间</p>
+</li>
+<li><p>能用foreach遍历访问的对象需要实现<u>IEnumerable</u>接口或声明<u>GetEnumerator</u></p>
+</li>
+<li><p>string s = new string(“xyz”)创建了几个string object<br>答：两个对象，一个是xyz，一个是指向xyz的引用对象s</p>
+</li>
+<li><p>如何处理几十万条并发数据<br>答：用存储过程或事务．取得最大标识的时候同时更新．．．注意主键不是自增量方式这种方法并发的时候是不会有重复主键的．．取得最大标识要有一个存储过程来获取</p>
+</li>
+<li><p>Session有什么重大BUG，微软提出了什么方法加以解决<br>答：是IIS中由于有进程回收机制，系统繁忙的话Session丢失，可以用Sate Server或SQL Server数据库的方式存储Session，不过这种方式比较慢，而且无法捕获Session的END事件</p>
+</li>
+<li><p>堆和栈的区别<br>答：栈：由编译器自动分配、释放。在函数体中定义的变量通常在栈上<br>堆：一般由程序员分配释放  </p>
+</li>
+<li><p>抽象类和接口的区别<br>答：相同点：<br>1、都不能被实例化，都可以通过继承实现其方法<br>2、都是面向对象编译的技术基础，实现了诸多的设计模式<br>不同点<br>1、接口支持多继承，抽象类只能单继承<br>2、接口只能定义抽象规则；抽象类即可以定义规则，还可以提供已实现的成员<br>3、接口可以用于支持回调；抽象类不能实现回调<br>4、接口是一组行为规范；抽象类是一个不完全的类，着重族的概念<br>5、接口只包含方法、属性、索引器、事件的签名，但不能定义字段和包含实现的方法；抽象类可以定义字段、属性、包含有实现的方法<br>6、接口可以作用于值类型和引用类型；抽象类只能作用于引用类型。例如Struct就可以继承接口而不能继承类  </p>
+</li>
+<li><p>一列数的规则如下：1、1、2、3、5、8、13、21、34…求第30位数是多少，用递归算法实现<br>答：<img src="/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/Foo.png" class="" title="Foo代码示意图"><br>此题有误 &amp;&amp;改成||</p>
+</li>
+<li><p>求以下表达式的值，写你您想到的一种或几种实现方法：1-2+3-4+……+m<br>答：<img src="/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/Fun.png" class="" title="Fun代码示意图">     </p>
+</li>
+<li><p>什么是事务？什么是锁？<br>答：事务是指一个工作单元，它包含一组数据操作命令，并且所有的命令作为一个整体一起向系统提交或撤消请求操作，即这组命令要么都执行，要么都不执行。<br>锁是在多用户环境中对数据的访问的限制。SqlServer自动锁定特定记录、字段或文件，防止用户访问，以维护数据安全或防止并发数据操作问题，锁可保证事务的完整性和并发性</p>
+</li>
+<li><p>什么是索引，有什么优点？<br>答：索引就像书的目录，索引使数据库程序无需扫描整个表，就可以在其中找到需要的数据，索引包含一个表中包含值的列表，其中包含了各个值的行所存储的位置，索引可以是单个或一组列，索引提供的表中数据的逻辑位置，合理划分索引能够大大提高数据库性能</p>
+</li>
+<li><p>视图是什么？游标是什么？<br>答：视图是一种虚拟表，虚拟表具有和物理表相同的功能，可以对虚拟表进行增改查操作；<br>视图通常是一个或多个表的行或列的子集；<br>视图的结果更容易理解(修改视图对基表不影响)，获取数据更容易(相比多表查询更方便)，限制数据检索(比如需要隐藏某些行或列)，维护更方便<br>游标对查询出来的结果集作为一个单元来有效的处理，游标可以定位在结果集的特定行、从结果集的当前位置检索一行或多行、可以对结果集中当前位置进行修改  </p>
+</li>
+<li><p>什么是存储过程？有什么优点？<br>答：存储过程是一组编译的SQL语句<br>优点：1、允许模块化程序设计，就是说只需要创建一次过程，以后在程序中就可以调用该过程任意次<br>2、允许更快执行，如果某操作需要执行大量SQL语句或重复执行，存储过程比SQL语句执行的要快<br>3、减少网络流量<br>4、更好的安全机制，对于没有权限执行存储过程的用户，也可授权他们执行存储过程  </p>
+</li>
+<li><p>什么是触发器？<br>答：触发器是一种特殊类型的存储过程，触发器主要通过事件触发而被执行<br>优点：1、强化约束，触发器能够提供比如CHECK约束<br>2、跟踪变化，触发器可以跟踪数据库内的操作，从而不允许未经允许许可的更新和变化<br>3、联级运算，比如某个表的触发器中包含对另一个表的数据操作，而该操作又导致该表上的触发器被触发  </p>
+</li>
+<li><p>列举ADO.NET中的五个主要对象，并简单描述<br>答：Connection——连接对象<br>Command——执行命令和存储过程<br>DataReader——向前只读的数据流<br>DataAdapter——适配器，支持增删查询<br>DataSet——数据级对象，相当于内存里的一张或多张表  </p>
+</li>
+<li><p>概述反射和序列化<br>答：反射：公共语言运行库加载器管理应用程序域。这种管理包括将这个程序集加载到相应的应用程序域以及控制每个程序集中类型层次结构的内存布局。程序集包含模块，而模块包含类型，类型又包含成员。反射则提供了封装程序集、模块和类型的对象。您可以使用反射动态地创建类型的实例，将类型动态绑定到现有对象，或从现有对象中获取类型。然后，可以调用类型的方法或访问其字段或属性<br>序列化：是将对象状态转换为可保持或传输的格式的过程。</p>
+</li>
+<li><p>ASP.NET中常见的内置对象？<br>答：Response、Request、Server、Session、Application、Cookie</p>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-11T03:28:23.489Z" itemprop="dateUpdated">2020-05-11 11:28:23</time>
+</span><br>
+
+
+        
+        此网站所有内容仅表示作者个人看法,如有说得不合看官心意的请多多谅解!
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhangjunhaocloud.github.io">
+            <img src="/img/avatar.jpg" alt="张峻豪">
+            张峻豪
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/&title=《C#面试题一》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/&title=《C#面试题一》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C#面试题一》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/05/05/%E9%9D%A2%E8%AF%95/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">数据库面试题一</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/05/01/%E9%98%85%E8%AF%BB/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BF%AE%E7%82%BC%E4%B9%8B%E9%81%93%E2%80%94%E2%80%94%E4%BB%8E%E5%B0%8F%E5%B7%A5%E5%88%B0%E4%B8%93%E5%AE%B6/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">程序员修炼之道——从小工到专家</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>张峻豪 &copy; 2011 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/&title=《C#面试题一》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/&title=《C#面试题一》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C#面试题一》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhangjunhaocloud.github.io/2019/05/01/%E9%9D%A2%E8%AF%95/NET%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'stay hungry stay foolish！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎您的光临!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

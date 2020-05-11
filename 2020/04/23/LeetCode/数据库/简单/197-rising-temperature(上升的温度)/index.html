@@ -29,7 +29,7 @@
 <meta property="og:description" content="题目描述： 给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。  +---------+------------------+------------------+ | Id(INT) | RecordDate(DATE) | Temperature(INT) | +---------+------------------+------">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-23T02:11:00.000Z">
-<meta property="article:modified_time" content="2020-04-23T02:11:36.210Z">
+<meta property="article:modified_time" content="2020-04-23T10:55:38.711Z">
 <meta property="article:author" content="张峻豪">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="力扣">
@@ -199,11 +199,8 @@
 |  4 |
 +----+</pre>
 <p>解答：</p>
-<pre>
-SELECT B.Id
-FROM dbo.Weather AS A
-INNER JOIN dbo.Weather AS B ON DATEDIFF(DD, A.RecordDate, B.RecordDate) = 1 AND A.Temperature < B.Temperature
-</pre>
+<p>MSSQL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT B.Id</span><br><span class="line">FROM dbo.Weather AS A</span><br><span class="line">INNER JOIN dbo.Weather AS B ON DATEDIFF(DD, A.RecordDate, B.RecordDate) &#x3D; 1 AND A.Temperature &lt; B.Temperature</span><br></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
@@ -211,7 +208,7 @@ INNER JOIN dbo.Weather AS B ON DATEDIFF(DD, A.RecordDate, B.RecordDate) = 1 AND 
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-23T02:11:36.210Z" itemprop="dateUpdated">2020-04-23 10:11:36</time>
+    最后更新时间：<time datetime="2020-04-23T10:55:38.711Z" itemprop="dateUpdated">2020-04-23 18:55:38</time>
 </span><br>
 
 

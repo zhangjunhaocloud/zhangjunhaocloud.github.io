@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>NET各版本功能 | 云顶小栈 | 小栖片刻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="NET">
+    <meta name="description" content="C# 8.0C# 8.0于2019年9月随着.NET Framework 4.8与VS2019一同发布  readonly成员 默认接口成员(重要) 在更多位置中使用更多模式 using声明 静态本地函数 可处置的ref结构 可为空引用类型 异步流(重要) 索引和范围  C# 7.3c# 7.3随着VS2017 v15.7发布于2018年5月  索引fixed字段不需要进行固定 可能会重新分配re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NET各版本功能">
+<meta property="og:url" content="https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/index.html">
+<meta property="og:site_name" content="云顶小栈">
+<meta property="og:description" content="C# 8.0C# 8.0于2019年9月随着.NET Framework 4.8与VS2019一同发布  readonly成员 默认接口成员(重要) 在更多位置中使用更多模式 using声明 静态本地函数 可处置的ref结构 可为空引用类型 异步流(重要) 索引和范围  C# 7.3c# 7.3随着VS2017 v15.7发布于2018年5月  索引fixed字段不需要进行固定 可能会重新分配re">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-21T07:36:00.000Z">
+<meta property="article:modified_time" content="2020-05-24T10:12:45.726Z">
+<meta property="article:author" content="张峻豪">
+<meta property="article:tag" content="NET">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">张峻豪</h5>
+          <a href="mailto:zhangjunhaocloud@outlook.com" title="zhangjunhaocloud@outlook.com" class="mail">zhangjunhaocloud@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangjunhaocloud" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">NET各版本功能</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">NET各版本功能</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-05-21T07:36:00.000Z" itemprop="datePublished" class="page-time">
+  2020-05-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/NET/">NET</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-8-0"><span class="post-toc-number">1.</span> <span class="post-toc-text">C# 8.0</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-7-3"><span class="post-toc-number">2.</span> <span class="post-toc-text">C# 7.3</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-7-2"><span class="post-toc-number">3.</span> <span class="post-toc-text">C# 7.2</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-7-1"><span class="post-toc-number">4.</span> <span class="post-toc-text">C# 7.1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-7-0"><span class="post-toc-number">5.</span> <span class="post-toc-text">C# 7.0</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-6-0"><span class="post-toc-number">6.</span> <span class="post-toc-text">C# 6.0</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-5-0"><span class="post-toc-number">7.</span> <span class="post-toc-text">C# 5.0</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-4-0"><span class="post-toc-number">8.</span> <span class="post-toc-text">C# 4.0</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-3-0"><span class="post-toc-number">9.</span> <span class="post-toc-text">C# 3.0</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-2-0"><span class="post-toc-number">10.</span> <span class="post-toc-text">C# 2.0</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-1-2"><span class="post-toc-number">11.</span> <span class="post-toc-text">C# 1.2</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-1-0"><span class="post-toc-number">12.</span> <span class="post-toc-text">C# 1.0</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-NET/NET各版本功能"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">NET各版本功能</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-05-21 15:36:00" datetime="2020-05-21T07:36:00.000Z"  itemprop="datePublished">2020-05-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/NET/">NET</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="C-8-0"><a href="#C-8-0" class="headerlink" title="C# 8.0"></a>C# 8.0</h3><p>C# 8.0于2019年9月随着<code>.NET Framework 4.8</code>与<code>VS2019</code>一同发布</p>
+<ul>
+<li>readonly成员</li>
+<li>默认接口成员(<strong>重要</strong>)</li>
+<li>在更多位置中使用更多模式</li>
+<li>using声明</li>
+<li>静态本地函数</li>
+<li>可处置的ref结构</li>
+<li>可为空引用类型</li>
+<li>异步流(<strong>重要</strong>)</li>
+<li>索引和范围</li>
+</ul>
+<h3 id="C-7-3"><a href="#C-7-3" class="headerlink" title="C# 7.3"></a>C# 7.3</h3><p>c# 7.3随着<code>VS2017 v15.7</code>发布于2018年5月</p>
+<ul>
+<li>索引fixed字段不需要进行固定</li>
+<li>可能会重新分配<code>ref</code>局部变量</li>
+<li><code>stackalloc</code>数组支持初始值设定项</li>
+<li>更多类型支持fixed语句</li>
+<li>增强的泛型约束</li>
+<li>元组支持==和!=</li>
+<li>将特性添加到自动实现的属性和支持字段</li>
+<li>in方法重载解析决胜属性</li>
+<li>扩展初始值设定项中的表达式变量</li>
+<li>改进了重载候选项</li>
+<li>公共或开放源代码签名</li>
+<li>pathmap</li>
+</ul>
+<h3 id="C-7-2"><a href="#C-7-2" class="headerlink" title="C# 7.2"></a>C# 7.2</h3><p>C# 7.2随着<code>VS2017 v15.5</code>发布于2017年11月</p>
+<ul>
+<li>安全高效的代码的增强功能</li>
+<li>非尾随命名参数</li>
+<li>数值文字中的前导下划线<blockquote>
+<p>int binaryValue = 0b_0101_0101;</p>
+</blockquote>
+</li>
+<li>private protected 访问修饰符<blockquote>
+<p>指示可通过包含同一程序集中声明的类或派生类来访问成员。虽然protected internal允许通过同一程序集中的派生或派生类进行访问，但private protected限制对同一程序集中声明的派生类的访问</p>
+</blockquote>
+</li>
+<li>条件 ref 表达式</li>
+</ul>
+<h3 id="C-7-1"><a href="#C-7-1" class="headerlink" title="C# 7.1"></a>C# 7.1</h3><p>C# 7.1随着<code>VS2017 v15.3</code>发布于2017年8月</p>
+<ul>
+<li>异步main方法</li>
+<li>默认文本表达式(default)</li>
+<li>推断元组元素名称</li>
+<li>泛型类型参数的模式匹配</li>
+<li>引用程序集生成(<code>-refout</code>、<code>-refonly</code>)</li>
+</ul>
+<h3 id="C-7-0"><a href="#C-7-0" class="headerlink" title="C# 7.0"></a>C# 7.0</h3><p>C# 7.0于2017年3月随着<code>.NET 4.7</code>和<code>VS2017</code>发布</p>
+<ul>
+<li>out变量(可直接在方法调用的参数列表中声明out变量,而不是编写单独的声明语句)</li>
+<li>元组</li>
+<li>弃元</li>
+<li>模式匹配</li>
+<li>ref局部变量和返回结果</li>
+<li>本地函数</li>
+<li>更多的expression - bodied 成员</li>
+<li>引发表达式(throw高级应用)<blockquote>
+<p>string arg = args.Length &gt;= 1 ? args[0] : throw new ArgumentException(“You must supply an argument”);</p>
+</blockquote>
+</li>
+<li>通用的异步返回类型</li>
+<li>数字文本语法改进<blockquote>
+<p>public const int Sixteen =   0b0001_0000;</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="C-6-0"><a href="#C-6-0" class="headerlink" title="C# 6.0"></a>C# 6.0</h3><p>C# 6.0在2015年7月随着<code>.NET Framework 4.6</code>一同发布，后期发布了<code>.NET Framework 4.6.1</code>、<code>4.6.2</code><br>C# 在3.0版和5.0版对面向对象的语言添加了主要的新功能，在6.0版中，它不再推出主导性的杀手锏，而是发布了很多使得C#编程更有效率的小功能。从整体来看，在此版本中，<strong>C#消除语言样本，让代码更简洁且更具有可读性</strong></p>
+<ul>
+<li>只读自动属性</li>
+<li>自动属性初始化表达式</li>
+<li>Expression-bodied(正文表达式) 函数成员<blockquote>
+<p>public string FullName =&gt; $”{FirstName} {LastName}”;</p>
+</blockquote>
+</li>
+<li>静态导入 using static<blockquote>
+<p>using static System.Console;<br>WriteLine(“Hello world”);</p>
+</blockquote>
+</li>
+<li>Null条件运算符(<strong>?.</strong>)<blockquote>
+<p>一个挺有意思的题目：?、?.、??、?:、?[]分别应用在什么场景下</p>
+</blockquote>
+</li>
+<li>字符串内插(<strong>$</strong>符号的应用)</li>
+<li>异常筛选器(异常捕捉<code>catch</code>中用<code>when</code>)</li>
+<li>nameof表达式</li>
+<li>catch和finally块中的await</li>
+<li>使用索引器初始化关联集合<blockquote>
+<p>private Dictionary&lt;int, string&gt; webErrors = new Dictionary&lt;int, string&gt;<br>{<br>&emsp;[404] = “Page not Found”,<br>&emsp;[302] = “Page moved, but left a forwarding address.”,<br>&emsp;[500] = “The web server can’t come out to play today.”<br>};  </p>
+</blockquote>
+</li>
+<li>集合初始值设定项中的扩展Add方法</li>
+<li>改进重载解析</li>
+</ul>
+<h3 id="C-5-0"><a href="#C-5-0" class="headerlink" title="C# 5.0"></a>C# 5.0</h3><p>C# 5.0在2012年2月随着<code>.NET Framework 4.5</code>一同发布，后期发布了<code>.NET Framework 4.5.1</code>、<code>4.5.2</code>。5.0版是C#语言有针对性的一个版本。对此版本中所做的几乎所有工作都归于另一个突破性语言概念：适用于异步编程的<code>async</code>和<code>await</code>模型</p>
+<ul>
+<li>异步编程(<code>async</code>、<code>await</code>)</li>
+<li>调用方信息</li>
+</ul>
+<h3 id="C-4-0"><a href="#C-4-0" class="headerlink" title="C# 4.0"></a>C# 4.0</h3><p>C# 4.0版和<code>Visual Studio 2010</code>一起发布于2010年4月，对应<code>.NET Framework4.0</code>。C# 4.0版很难达到3.0版的创新水平</p>
+<ul>
+<li>动态绑定(<code>dynamic</code>)</li>
+<li>命名实参和可选实参</li>
+<li>泛型中的协变和逆变</li>
+<li>嵌入的互操作类型</li>
+</ul>
+<h3 id="C-3-0"><a href="#C-3-0" class="headerlink" title="C# 3.0"></a>C# 3.0</h3><p>C# 3.0版和<code>Visual Studio 2008</code>一起发布于2007年下半年,但完整的语言功能是在<code>.NET Framework 3.5</code>版中发布的。此版本标示着C#发展过程中的重大更改。C#成为真正强大的编程语言</p>
+<ul>
+<li>自动实现的属性</li>
+<li>匿名类型</li>
+<li>隐式类型本地变量</li>
+<li>扩展方法</li>
+<li>分部方法</li>
+<li>对象和集合初始值设定项</li>
+<li>查询表达式</li>
+<li>Lambda表达式</li>
+<li>LINQ</li>
+<li>表达式树(<code>System.Linq.Expression</code>)</li>
+</ul>
+<h3 id="C-2-0"><a href="#C-2-0" class="headerlink" title="C# 2.0"></a>C# 2.0</h3><p>微软于2005年11月发布了<code>.NET Framework 2.0</code>,同时发布了<strong>Visual Studio 2005</strong></p>
+<ul>
+<li>分部类</li>
+<li>泛型</li>
+<li>匿名方法</li>
+<li>可以为null的类型</li>
+<li>迭代器</li>
+<li>协变和逆变(协变和逆变能够实现数组类型、委托类型和泛型类型参数的隐式引用转换。协变保留分配兼容性，逆变与之相反)</li>
+<li>getter/setter单独可访问性</li>
+</ul>
+<h3 id="C-1-2"><a href="#C-1-2" class="headerlink" title="C# 1.2"></a>C# 1.2</h3><p>随着<code>Visual Studio 2003</code>一起提供。它对语法做了一些小改进。最值得注意的是，从此版本开始，当<code>IEnumerator</code>实现<code>IDisposable</code>时,foreach循环中生成的代码会在<code>IEnumerator</code>上调用<code>Dispose</code></p>
+<h3 id="C-1-0"><a href="#C-1-0" class="headerlink" title="C# 1.0"></a>C# 1.0</h3><ul>
+<li>类</li>
+<li>结构</li>
+<li>接口</li>
+<li>事件</li>
+<li>属性</li>
+<li>委托</li>
+<li>表达式</li>
+<li>语句</li>
+<li>特性</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-05-24T10:12:45.726Z" itemprop="dateUpdated">2020-05-24 18:12:45</time>
+</span><br>
+
+
+        
+        此网站所有内容仅表示作者个人看法,如有说得不合看官心意的请多多谅解!
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhangjunhaocloud.github.io">
+            <img src="/img/avatar.jpg" alt="张峻豪">
+            张峻豪
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NET/" rel="tag">NET</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/&title=《NET各版本功能》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/&title=《NET各版本功能》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《NET各版本功能》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/05/18/%E7%BC%93%E5%AD%98/%E7%BC%93%E5%AD%98%E5%9F%BA%E7%A1%80/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">缓存基础(未完成)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢客官~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>张峻豪 &copy; 2011 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/&title=《NET各版本功能》 — 云顶小栈&pic=https://zhangjunhaocloud.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/&title=《NET各版本功能》 — 云顶小栈&source=记录自己成长经历" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《NET各版本功能》 — 云顶小栈&url=https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/&via=https://zhangjunhaocloud.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhangjunhaocloud.github.io/2020/05/21/NET/NET%E5%90%84%E7%89%88%E6%9C%AC%E5%8A%9F%E8%83%BD/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'stay hungry stay foolish！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎您的光临!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
